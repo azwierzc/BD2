@@ -13,4 +13,8 @@ export class EmployeeService {
     return this.http.get(serverAddress + '/employee')
       .toPromise();
   }
+
+  deleteEmployee(id: number): Promise<any>  {
+    return this.http.delete(serverAddress + '/employee' + '/' + id).toPromise();
+  }
 }

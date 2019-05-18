@@ -4,7 +4,7 @@
       <h4>Available Employees</h4>
     </div>
     <div *ngFor="let employee of employeesList">
-      <app-employee-item [employee]="employee"></app-employee-item>
+      <app-employee-item [employee]="employee" (deleteEvent)="onDeleteEvent($event)"></app-employee-item>
     </div>
   </div>
 </div>

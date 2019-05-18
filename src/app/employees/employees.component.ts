@@ -13,7 +13,15 @@ export class EmployeesComponent implements OnInit {
   constructor(private service: EmployeeService) { }
 
   ngOnInit() {
+    this.resolveEmployees();
+  }
+
+  resolveEmployees() {
     this.service.fetchEmployeesList().then((list: EmployeeModel[]) => this.employeesList = list);
+  }
+
+  onDeleteEvent(id: number) {
+    this.service.deleteEmployee(id).then(() => this.resolveEmployees());
   }
 
 }

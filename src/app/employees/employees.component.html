@@ -1,10 +1,52 @@
 <div class="d-flex">
   <div class="card mx-auto" style="width: 95%;">
-    <div class="card-header">
+    <div class="card-header d-flex">
       <h4>Available Employees</h4>
+      <div class="btn btn-primary mr-4 ml-auto" (click)="onAddEmployeeClick(modal)"> Add Employee</div>
     </div>
     <div *ngFor="let employee of employeesList">
       <app-employee-item [employee]="employee" (deleteEvent)="onDeleteEvent($event)"></app-employee-item>
     </div>
   </div>
 </div>
+
+
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add employee form</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Name</span>
+          </div>
+          <input type="text" [(ngModel)]="employeeToAdd.name" name="name">
+        </div>
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Surname</span>
+          </div>
+          <input type="text" [(ngModel)]="employeeToAdd.surname" name="surname">
+        </div>
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Prefix</span>
+          </div>
+          <input type="text" [(ngModel)]="employeeToAdd.prefix" name="prefix">
+        </div>
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Type</span>
+          </div>
+          <input type="text" [(ngModel)]="employeeToAdd.type" name="type">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="btn btn-secondary ml-auto" (click)="modal.close()">Cancel</div>
+    <div class="btn btn-primary " (click)="saveReport(modal)">Save</div>
+  </div>
+</ng-template>

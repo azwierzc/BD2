@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {EmployeeModel} from './models/EmployeeModel';
-import {EmployeeService} from './services/employee.service';
+import {EmployeeService} from '../services/employee.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EmployeeToAddModel} from './models/EmployeeToAddModel';
 import {WardModel} from './models/WardModel';
-import {WardService} from './services/ward.service';
+import {WardService} from '../services/ward.service';
 import {Router} from '@angular/router';
 
 @Component({

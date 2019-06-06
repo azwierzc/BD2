@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EmployeeToAddModel} from './models/EmployeeToAddModel';
 import {WardModel} from './models/WardModel';
 import {WardService} from './services/ward.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -21,7 +22,8 @@ export class EmployeesComponent implements OnInit {
 
   constructor(private service: EmployeeService,
               private wardsService: WardService,
-              private modalService: NgbModal
+              private modalService: NgbModal,
+              private router: Router
   ) {
   }
 
@@ -42,6 +44,10 @@ export class EmployeesComponent implements OnInit {
 
   onDeleteEvent(id: number) {
     this.service.deleteEmployee(id).then(() => this.resolveEmployees());
+  }
+
+  onDetailsEvent(id: number) {
+    this.router.navigate(['employees/' + id]);
   }
 
   onAddEmployeeClick(modal) {

@@ -8,7 +8,9 @@ import {EmployeeModel} from '../models/EmployeeModel';
 })
 export class EmployeeItemComponent implements OnInit {
   @Input() employee: EmployeeModel;
+
   @Output() deleteEvent = new EventEmitter<number>();
+  @Output() detailsEvent = new EventEmitter<number>();
 
   constructor() {
   }
@@ -18,6 +20,10 @@ export class EmployeeItemComponent implements OnInit {
 
   onDeleteClick() {
     this.deleteEvent.emit(this.employee.id);
+  }
+
+  onDetailsClick() {
+    this.detailsEvent.emit(this.employee.id);
   }
 
 }

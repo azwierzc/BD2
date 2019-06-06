@@ -5,7 +5,7 @@
       <div class="btn btn-primary mr-4 ml-auto" *ngIf="wardsList" (click)="onAddEmployeeClick(modal)"> Add Employee</div>
     </div>
     <div *ngFor="let employee of employeesList">
-      <app-employee-item [employee]="employee" (deleteEvent)="onDeleteEvent($event)"></app-employee-item>
+      <app-employee-item [employee]="employee" (deleteEvent)="onDeleteEvent($event)" (detailsEvent)="onDetailsEvent($event)"></app-employee-item>
     </div>
   </div>
 </div>

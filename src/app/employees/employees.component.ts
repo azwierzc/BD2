@@ -3,6 +3,8 @@ import {EmployeeModel} from './models/EmployeeModel';
 import {EmployeeService} from './services/employee.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EmployeeToAddModel} from './models/EmployeeToAddModel';
+import {WardModel} from './models/WardModel';
+import {WardService} from './services/ward.service';
 
 @Component({
   selector: 'app-employees',
@@ -10,20 +12,32 @@ import {EmployeeToAddModel} from './models/EmployeeToAddModel';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+  employeeTypeOptions: string[] = ['DOCTOR', 'NURSE'];
+
   employeesList: EmployeeModel[];
   employeeToAdd: EmployeeToAddModel;
 
-  constructor(private service: EmployeeService, private modalService: NgbModal) {
+  wardsList: WardModel[];
+
+  constructor(private service: EmployeeService,
+              private wardsService: WardService,
+              private modalService: NgbModal
+  ) {
   }
 
   ngOnInit() {
     this.employeeToAdd = new EmployeeToAddModel();
     this.employeeToAdd.wardId = 1; // TODO: Remove this statically selected ward
     this.resolveEmployees();
+    this.resolveWards();
   }
 
   resolveEmployees() {
     this.service.fetchEmployeesList().then((list: EmployeeModel[]) => this.employeesList = list);
+  }
+
+  resolveWards() {
+    this.wardsService.fetchWardsList().then((list: WardModel[]) => this.wardsList = list);
   }
 
   onDeleteEvent(id: number) {

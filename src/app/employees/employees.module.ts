@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {EmployeesComponent} from './employees.component';
 import { EmployeeItemComponent } from './employee-item/employee-item.component';
 import {FormsModule} from '@angular/forms';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
   ]
 })
 export class EmployeesModule { }

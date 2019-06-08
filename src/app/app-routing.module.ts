@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {EmployeesComponent} from './employees/employees.component';
 import {LoginComponent} from './login/login.component';
 import {EmployeeDetailsComponent} from './employee-details/employee-details.component';
+import {InstrumentsComponent} from './instruments/instruments.component';
 
 const routes: Routes = [
   {
@@ -14,14 +15,13 @@ const routes: Routes = [
     component: EmployeeDetailsComponent,
   },
   {
-    path: '',
-    pathMatch: 'prefix',
-    redirectTo: 'employees',
-  },
-  {
     path: 'login',
     component: LoginComponent,
   },
+  {
+    path: 'instruments',
+    component: InstrumentsComponent
+  }
 ];
 
 @NgModule({

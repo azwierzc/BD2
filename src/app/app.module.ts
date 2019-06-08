@@ -9,8 +9,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {AuthInterceptor} from './AuthInterceptor';
-import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import {EmployeeDetailsModule} from './employee-details/employee-details.module';
+import {IntrumentsModule} from './instruments/intruments.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import {EmployeeDetailsModule} from './employee-details/employee-details.module'
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    EmployeeDetailsModule
+    EmployeeDetailsModule,
+    IntrumentsModule
   ],
   providers: [
     {

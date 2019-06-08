@@ -2,7 +2,7 @@
   <div class="card mx-auto" style="width: 95%;">
     <div class="card-header d-flex">
       <h4>Available Instruments</h4>
-      <div class="btn btn-primary mr-4 ml-auto" *ngIf="instrumentTypesList" (click)="onAddInstrumentClick(modal)"> Add Instrument</div>
+      <div class="btn btn-primary mr-4 ml-auto" (click)="onAddInstrumentClick(modal)"> Add Instrument</div>
     </div>
     <div *ngFor="let instrument of instrumentsList">
       <app-instrument-item [instrument]="instrument" (deleteEvent)="onDeleteEvent($event)" (detailsEvent)="onDetailsEvent($event)"></app-instrument-item>
@@ -18,26 +18,19 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
+          <!-- Dodać datepickery-->
         <div class="input-group mt-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Check period</span>
+            <span class="input-group-text">Serial Number</span>
           </div>
-          <input type="text" [(ngModel)]="instrumentToAdd.checkPeriod" name="checkPeriod">
+          <input type="text" [(ngModel)]="instrumentToAdd.serialNumber" name="serialNumber">
         </div>
         <div class="input-group mt-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">lastCheckTimestamp</span>
+            <span class="input-group-text">Instrument Type</span>
           </div>
-          <input type="text" [(ngModel)]="instrumentToAdd.lastCheckTimestamp" name="surname">
+          <input type="text" [(ngModel)]="instrumentToAdd.type" name="type">
         </div>
-
-
-        <ng-select class="mt-3" [items]="instrumentTypesList"
-                   name="type"
-                   bindLabel="name"
-                   bindValue="id"
-                   [(ngModel)]="instrumentToAdd.instrumentTypeId">
-        </ng-select>
       </div>
     </form>
   </div>

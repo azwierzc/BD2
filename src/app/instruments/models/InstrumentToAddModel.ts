@@ -1,8 +1,8 @@
 export class InstrumentToAddModel {
   id: number;
-  serialNumber: number;
+  serialNumber: string;
   lastCheckTimestamp: Date;
   checkPeriod: Date;
-  instrumentTypeId: number;
+  type: string;
 
 }

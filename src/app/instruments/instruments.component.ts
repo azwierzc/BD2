@@ -3,7 +3,6 @@ import {InstrumentModel} from './models/InstrumentModel';
 import {InstrumentService} from '../services/instrument.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {InstrumentToAddModel} from './models/InstrumentToAddModel';
-import {InstrumentTypeModel} from './models/InstrumentTypeModel';
 import {InstrumentTypeService} from '../services/instrumentType.service';
 import {Router} from '@angular/router';
 
@@ -13,12 +12,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./instruments.component.css']
 })
 export class InstrumentsComponent implements OnInit {
-  instrumentTypeOptions: string[] = ['WOZEK', 'MATERAC'];
 
   instrumentsList: InstrumentModel[];
   instrumentToAdd: InstrumentToAddModel;
 
-  instrumentTypesList: InstrumentTypeModel[];
 
   constructor(private service: InstrumentService,
               private instrumentTypesService: InstrumentTypeService,
@@ -29,17 +26,11 @@ export class InstrumentsComponent implements OnInit {
 
   ngOnInit() {
     this.instrumentToAdd = new InstrumentToAddModel();
-    this.instrumentToAdd.instrumentTypeId = 1; // TODO: Remove this statically selected ward
     this.resolveInstruments();
-    this.resolveInstrumentTypes();
   }
 
   resolveInstruments() {
     this.service.fetchInstrumentsList().then((list: InstrumentModel[]) => this.instrumentsList = list);
-  }
-
-  resolveInstrumentTypes() {
-    this.instrumentTypesService.fetchInstrumentTypesList().then((list: InstrumentTypeModel[]) => this.instrumentTypesList = list);
   }
 
   onDeleteEvent(id: number) {

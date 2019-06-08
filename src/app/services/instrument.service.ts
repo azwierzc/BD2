@@ -11,7 +11,7 @@ export class InstrumentService {
   constructor(private http: HttpClient) { }
 
   fetchInstrumentsList(): Promise<any> {
-    return this.http.get(serverAddress + '/instrument')
+    return this.http.get(serverAddress + '/instruments')
       .toPromise();
   }
 
@@ -26,6 +26,6 @@ export class InstrumentService {
   }
 
   saveInstrument(instrument: InstrumentToAddModel): Promise<any>  {
-    return this.http.post(serverAddress + '/instrument', instrument).toPromise();
+    return this.http.post(serverAddress + '/instruments', instrument).toPromise();
   }
 }

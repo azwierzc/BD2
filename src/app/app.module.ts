@@ -11,12 +11,22 @@ import {LoginComponent} from './login/login.component';
 import {AuthInterceptor} from './AuthInterceptor';
 import {EmployeeDetailsModule} from './employee-details/employee-details.module';
 import {IntrumentsModule} from './instruments/intruments.module';
+import { NavComponent } from './nav/nav.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import { RentComponent } from './rent/rent.component';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    NavComponent,
+    AboutComponent,
+    ContactComponent,
+    HomeComponent,
+    RentComponent,
   ],
   imports: [
     BrowserModule,

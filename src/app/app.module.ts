@@ -11,6 +11,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthInterceptor} from './AuthInterceptor';
 import {EmployeeDetailsModule} from './employee-details/employee-details.module';
 import {IntrumentsModule} from './instruments/intruments.module';
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import {IntrumentsModule} from './instruments/intruments.module';
     FormsModule,
     ReactiveFormsModule,
     EmployeeDetailsModule,
-    IntrumentsModule
+    IntrumentsModule,
+    DlDateTimeDateModule,  // <--- Determines the data type of the model
+    DlDateTimePickerModule,
   ],
   providers: [
     {

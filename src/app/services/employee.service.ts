@@ -11,13 +11,11 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   fetchEmployeesList(): Promise<any> {
-    return this.http.get(serverAddress + '/employee')
-      .toPromise();
+    return this.http.get(serverAddress + '/employee').toPromise();
   }
 
   fetchEmployee(id: number): Promise<any> {
-    return this.http.get(serverAddress + '/employee/' + id)
-      .toPromise();
+    return this.http.get(serverAddress + '/employee/' + id).toPromise();
   }
 
 

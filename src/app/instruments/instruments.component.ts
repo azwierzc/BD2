@@ -1,3 +1,4 @@
+
 import {Component, OnInit} from '@angular/core';
 import {InstrumentModel} from './models/InstrumentModel';
 import {InstrumentService} from '../services/instrument.service';
@@ -7,7 +8,7 @@ import {InstrumentTypeService} from '../services/instrumentType.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-Instruments',
+  selector: 'app-instruments',
   templateUrl: './instruments.component.html',
   styleUrls: ['./instruments.component.css']
 })

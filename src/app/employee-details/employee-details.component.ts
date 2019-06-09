@@ -9,6 +9,7 @@ import {InstrumentTypeService} from '../services/instrumentType.service';
 
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RoomReservationComponent} from './room-reservation/room-reservation.component';
+import {InstrumentReservationComponent} from './instrument-reservation/instrument-reservation.component';
 
 @Component({
   selector: 'app-employee-details',
@@ -55,11 +56,15 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
 
-  onRentInstrumentClick() {
+  onRentInstrumentClick(id: number) {
+    const modelReference = this.modalService.open(InstrumentReservationComponent, {ariaLabelledBy: 'modal-basic-title'});
+    modelReference.componentInstance.employeeId = this.employeeId;
+    modelReference.componentInstance.instrumentId = id;
   }
 
   onDetailsEvent(id: number) {
     this.router.navigate(['Instruments/' + id]);
+
   }
 
 

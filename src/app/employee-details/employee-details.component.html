@@ -21,7 +21,7 @@
     <div class="card">
       <div class="card-body d-flex">
         <h5 class="card-title mr-auto ml-4">{{instrument.type}}    Serial number: {{instrument.serialNumber}}</h5>
-        <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick()"> Wypożycz</div>
+        <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick(instrument.id)"> Wypożycz</div>
       </div>
     </div>
   </div>

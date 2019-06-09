@@ -1,7 +1,7 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Add room reservation</h4>
+  <h4 class="modal-title" id="modal-basic-title">Add instrument reservation</h4>
 </div>
-<div class="modal-body" *ngIf="roomReservation">
+<div class="modal-body" *ngIf="instrumentReservation">
   <form>
     <div class="form-group">
 
@@ -12,7 +12,7 @@
           maxView="year"
           minView="minute"
           minuteStep="15"
-          [(ngModel)]="roomReservation.startTimestamp">
+          [(ngModel)]="instrumentReservation.startTimestamp">
         </dl-date-time-picker>
       </div>
       <div class="mt-3">
@@ -22,7 +22,7 @@
           maxView="year"
           minView="minute"
           minuteStep="15"
-          [(ngModel)]="roomReservation.endTimestamp">
+          [(ngModel)]="instrumentReservation.endTimestamp">
         </dl-date-time-picker>
       </div>
     </div>

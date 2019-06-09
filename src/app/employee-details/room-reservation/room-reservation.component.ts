@@ -12,12 +12,13 @@ import {RoomReservationService} from '../../services/room-reservation.service';
 export class RoomReservationComponent implements OnInit {
   roomReservation: RoomReservation;
   @Input() employeeId: number;
+  @Input() roomId: number;
   constructor(private activeModal: NgbActiveModal, private route: ActivatedRoute, private service: RoomReservationService) { }
 
   ngOnInit() {
     this.roomReservation = new RoomReservation();
     this.roomReservation.employeeId = this.employeeId;
-    // this.roomReservation.employeeId = Number(this.route.snapshot.params.id);
+    this.roomReservation.roomId = this.roomId;
   }
 
   onSave() {

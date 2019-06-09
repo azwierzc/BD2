@@ -25,4 +25,14 @@ export class InstrumentReservationComponent implements OnInit {
     this.service.saveInstrumentReservation(this.instrumentReservation);
     this.activeModal.close();
   }
+
+  getDate(date: Date) {
+    const newdate = new Date(date);
+    return newdate.toLocaleDateString();
+  }
+
+  getTime(date: Date) {
+    const newdate = new Date(date);
+    return newdate.toLocaleTimeString();
+  }
 }

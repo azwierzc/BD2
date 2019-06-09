@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {EmployeeToAddModel} from '../employees/models/EmployeeToAddModel';
 import {serverAddress} from '../../assets/server.constant';
 import {HttpClient} from '@angular/common/http';
 import {RoomReservation} from '../employee-details/models/RoomReservation';

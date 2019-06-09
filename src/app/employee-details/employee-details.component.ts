@@ -56,6 +56,7 @@ export class EmployeeDetailsComponent implements OnInit {
   onInstrumentOptionClick() {
     if (this.isInstrumentReservationOpen === false) {
       this.isInstrumentReservationOpen = true;
+      this.isRoomReservationOpen = false;
     } else {
       this.isInstrumentReservationOpen = false;
     }
@@ -64,6 +65,7 @@ export class EmployeeDetailsComponent implements OnInit {
   onRoomOptionClick() {
     if (this.isRoomReservationOpen === false) {
       this.isRoomReservationOpen = true;
+      this.isInstrumentReservationOpen = false;
     } else {
       this.isRoomReservationOpen = false;
     }

@@ -28,6 +28,14 @@
     </div>
   </form>
 </div>
+
+<div class="card-title ml-4">Od:
+  <div class="card-title mr-auto ml-4" *ngIf="instrumentReservation.startTimestamp"> {{getDate(instrumentReservation.startTimestamp)}} {{getTime(instrumentReservation.startTimestamp)}}</div>
+</div>
+<div class="card-title ml-4">Do:
+  <div class="card-title mr-auto ml-4" *ngIf="instrumentReservation.endTimestamp">{{getDate(instrumentReservation.endTimestamp)}} {{getTime(instrumentReservation.endTimestamp)}}</div>
+</div>
+
 <div class="modal-footer">
   <div class="btn btn-secondary ml-auto" (click)="activeModal.close()">Cancel</div>
   <div class="btn btn-secondary ml-auto" (click)="onSave()">Save</div>

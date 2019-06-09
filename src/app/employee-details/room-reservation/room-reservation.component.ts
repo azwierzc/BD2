@@ -3,12 +3,16 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {RoomReservation} from '../models/RoomReservation';
 import {ActivatedRoute} from '@angular/router';
 import {RoomReservationService} from '../../services/room-reservation.service';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-room-reservation',
   templateUrl: './room-reservation.component.html',
   styleUrls: ['./room-reservation.component.css']
 })
+
+
 export class RoomReservationComponent implements OnInit {
   roomReservation: RoomReservation;
   @Input() employeeId: number;
@@ -24,5 +28,15 @@ export class RoomReservationComponent implements OnInit {
   onSave() {
     this.service.saveRoomReservation(this.roomReservation);
     this.activeModal.close();
+  }
+
+  getDate(date: Date) {
+    const newdate = new Date(date);
+    return newdate.toLocaleDateString();
+  }
+
+  getTime(date: Date) {
+    const newdate = new Date(date);
+    return newdate.toLocaleTimeString();
   }
 }

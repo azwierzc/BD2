@@ -1,0 +1,41 @@
+<div class="d-flex">
+  <div class="card mx-auto" style="width: 95%;">
+    <div class="card-header d-flex">
+      <h4>Dostępne sale</h4>
+      <div class="btn btn-primary mr-4 ml-auto" (click)="onAddRoomClick(modal)"> Dodaj salę</div>
+    </div>
+    <div *ngFor="let room of roomsList">
+      <app-room-item [room]="room" (deleteEvent)="onDeleteEvent($event)" (detailsEvent)="onDetailsEvent($event)"></app-room-item>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Formularz dodawania sali</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <!-- Dodać datepickery-->
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Numer</span>
+          </div>
+          <input type="text" [(ngModel)]="roomToAdd.number" name="number">
+        </div>
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Typ</span>
+          </div>
+          <input type="text" [(ngModel)]="roomToAdd.type" name="type">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="btn btn-secondary ml-auto" (click)="modal.close()">Zamknij</div>
+    <div class="btn btn-primary " (click)="saveReport(modal)">Zapisz</div>
+  </div>
+</ng-template>

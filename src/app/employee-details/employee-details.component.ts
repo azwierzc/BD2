@@ -10,7 +10,7 @@ import {InstrumentTypeService} from '../services/instrumentType.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RoomReservationComponent} from './room-reservation/room-reservation.component';
 import {InstrumentReservationComponent} from './instrument-reservation/instrument-reservation.component';
-import {Room} from './models/Room';
+import {RoomModel} from './models/RoomModel';
 import {RoomService} from '../services/room.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
   employeeId: number;
   employee: EmployeeModel;
   instrumentsList: InstrumentModel[];
-  roomsList: Room[];
+  roomsList: RoomModel[];
   isInstrumentReservationOpen = false;
   isRoomReservationOpen = false;
   @Input() instrument: InstrumentModel;
@@ -50,7 +50,7 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   resolveRooms() {
-    this.roomService.fetchRoomsList().then((list: Room[]) => this.roomsList = list);
+    this.roomService.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list);
   }
 
   onInstrumentOptionClick() {

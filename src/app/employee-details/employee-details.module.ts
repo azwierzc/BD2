@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {EmployeeDetailsComponent} from './employee-details.component';
 import { RoomReservationComponent } from './room-reservation/room-reservation.component';
+import {DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -9,7 +11,9 @@ import { RoomReservationComponent } from './room-reservation/room-reservation.co
     RoomReservationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DlDateTimePickerModule,
+    FormsModule
   ],
   entryComponents: [
     RoomReservationComponent

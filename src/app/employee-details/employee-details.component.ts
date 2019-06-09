@@ -22,6 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   onAddRoomReservation() {
-    this.modalService.open(RoomReservationComponent, {ariaLabelledBy: 'modal-basic-title'});
+    const modelReference = this.modalService.open(RoomReservationComponent, {ariaLabelledBy: 'modal-basic-title'});
+    modelReference.componentInstance.employeeId = this.employeeId;
   }
 }

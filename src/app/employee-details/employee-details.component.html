@@ -6,3 +6,37 @@
     </div>
   </div>
 </div>
+
+
+<h5 class="card-title mr-auto ml-4">{{employee.name}} {{employee.surname}}</h5>
+
+<h5 class="card-title mr-auto ml-4">{{employee.prefix}} {{employee.wardName}}</h5>
+
+
+
+
+
+
+    <div class="btn btn-primary mr-4 ml-auto" (click)="onRentClick(modal)"> Wypożycz sprzęt</div>
+    <div class="btn btn-primary mr-4" (click)="onBackClick()"> Wróć </div>
+
+
+
+
+<p>
+
+</p>
+<p>
+
+</p>
+
+    <div *ngIf="b">
+<div *ngFor="let instrument of instrumentsList">
+<div class="card">
+  <div class="card-body d-flex">
+    <h5 class="card-title mr-auto ml-4">{{instrument.type}}    Serial number: {{instrument.serialNumber}}</h5>
+    <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick()"> Wypożycz </div>
+  </div>
+</div>
+</div>
+    </div>

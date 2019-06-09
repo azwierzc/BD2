@@ -10,6 +10,9 @@ import {NgSelectModule} from '@ng-select/ng-select';
     InstrumentsComponent,
     InstrumentItemComponent
   ],
+  exports: [
+  InstrumentsComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

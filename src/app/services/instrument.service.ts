@@ -16,13 +16,13 @@ export class InstrumentService {
   }
 
   fetchInstrument(id: number): Promise<any> {
-    return this.http.get(serverAddress + '/instrument/' + id)
+    return this.http.get(serverAddress + '/instruments/' + id)
       .toPromise();
   }
 
 
   deleteInstrument(id: number): Promise<any>  {
-    return this.http.delete(serverAddress + '/instrument' + '/' + id).toPromise();
+    return this.http.delete(serverAddress + '/instruments' + '/' + id).toPromise();
   }
 
   saveInstrument(instrument: InstrumentToAddModel): Promise<any>  {

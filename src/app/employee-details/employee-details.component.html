@@ -1,3 +1,8 @@
-<p *ngIf="employee">
-  employee-details works! {{employeeId}} {{employee.name}}
-</p>
+<div class="d-flex">
+  <div class="card mx-auto" style="width: 95%;">
+    <div class="card-header d-flex">
+      <h4>Employee details</h4>
+      <div class="btn btn-primary mr-4 ml-auto" *ngIf="employee" (click)="onAddRoomReservation()"> Add Room Reservation</div>
+    </div>
+  </div>
+</div>

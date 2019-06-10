@@ -1,8 +1,8 @@
 <div class="d-flex">
   <div class="card mx-auto" style="width: 95%;">
     <div class="card-header d-flex">
-      <h4>Available Employees</h4>
-      <div class="btn btn-primary mr-4 ml-auto" *ngIf="wardsList" (click)="onAddEmployeeClick(modal)"> Add Employee</div>
+      <h4>Pracownicy</h4>
+      <div class="btn btn-primary mr-4 ml-auto" *ngIf="wardsList" (click)="onAddEmployeeClick(modal)"> Dodaj pracownika</div>
     </div>
     <div *ngFor="let employee of employeesList">
       <app-employee-item [employee]="employee" (deleteEvent)="onDeleteEvent($event)" (detailsEvent)="onDetailsEvent($event)"></app-employee-item>
@@ -13,26 +13,26 @@
 
 <ng-template #modal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add employee form</h4>
+    <h4 class="modal-title" id="modal-basic-title">Dodaj pracownika</h4>
   </div>
   <div class="modal-body">
     <form>
       <div class="form-group">
         <div class="input-group mt-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Name</span>
+            <span class="input-group-text">Imię</span>
           </div>
           <input type="text" [(ngModel)]="employeeToAdd.name" name="name">
         </div>
         <div class="input-group mt-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Surname</span>
+            <span class="input-group-text">Nazwisko</span>
           </div>
           <input type="text" [(ngModel)]="employeeToAdd.surname" name="surname">
         </div>
         <div class="input-group mt-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Prefix</span>
+            <span class="input-group-text">Tytuł</span>
           </div>
           <input type="text" [(ngModel)]="employeeToAdd.prefix" name="prefix">
         </div>
@@ -51,8 +51,8 @@
     </form>
   </div>
   <div class="modal-footer">
-    <div class="btn btn-secondary ml-auto" (click)="modal.close()">Cancel</div>
-    <div class="btn btn-primary " (click)="saveReport(modal)">Save</div>
+    <div class="btn btn-secondary ml-auto" (click)="modal.close()">Zamknij</div>
+    <div class="btn btn-primary " (click)="saveReport(modal)">Zapisz</div>
   </div>
 </ng-template>
 

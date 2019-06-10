@@ -11,20 +11,18 @@ import {LoginComponent} from './login/login.component';
 import {AuthInterceptor} from './AuthInterceptor';
 import {EmployeeDetailsModule} from './employee-details/employee-details.module';
 import {IntrumentsModule} from './instruments/intruments.module';
-import { NavComponent } from './nav/nav.component';
-import { HomeComponent } from './home/home.component';
-import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import {NavComponent} from './nav/nav.component';
+import {HomeComponent} from './home/home.component';
+import {DlDateTimeDateModule, DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
+import {RoomsModule} from './rooms/rooms.module';
+import {RoomDetailsModule} from './room-details/room-details.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavComponent,
-
     HomeComponent,
-
-    // *EmployeeDetailsComponent,
-    // * InstrumentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +38,8 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
     HttpClientModule,
     ReactiveFormsModule,
     IntrumentsModule,
+    RoomsModule,
+    RoomDetailsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
   ],

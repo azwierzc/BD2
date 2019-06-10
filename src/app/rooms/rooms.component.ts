@@ -36,7 +36,7 @@ export class RoomsComponent implements OnInit {
   }
 
   onDetailsEvent(id: number) {
-    this.router.navigate(['Rooms/' + id]);
+    this.router.navigate(['rooms/' + id]);
   }
 
   onAddRoomClick(modal) {

@@ -7,6 +7,7 @@ import {EmployeeDetailsComponent} from './employee-details/employee-details.comp
 
 import {InstrumentsComponent} from './instruments/instruments.component';
 import {RoomsComponent} from './rooms/rooms.component';
+import {RoomDetailsComponent} from './room-details/room-details.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   },
   { path: '', component: HomeComponent },
   { path: 'rooms', component: RoomsComponent },
+  {
+    path: 'rooms/:id',
+    component: RoomDetailsComponent,
+  },
 ];
 
 @NgModule({

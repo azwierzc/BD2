@@ -3,8 +3,6 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {RoomReservation} from '../models/RoomReservation';
 import {ActivatedRoute} from '@angular/router';
 import {RoomReservationService} from '../../services/room-reservation.service';
-import { Pipe, PipeTransform } from '@angular/core';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-room-reservation',
@@ -17,7 +15,9 @@ export class RoomReservationComponent implements OnInit {
   roomReservation: RoomReservation;
   @Input() employeeId: number;
   @Input() roomId: number;
-  constructor(private activeModal: NgbActiveModal, private route: ActivatedRoute, private service: RoomReservationService) { }
+
+  constructor(private activeModal: NgbActiveModal, private route: ActivatedRoute, private service: RoomReservationService) {
+  }
 
   ngOnInit() {
     this.roomReservation = new RoomReservation();

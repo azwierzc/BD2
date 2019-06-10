@@ -11,6 +11,16 @@ export class InstrumentReservationService {
   constructor(private http: HttpClient) {
   }
 
+  fetchInstrumentReservationsList(): Promise<any> {
+    return this.http.get(serverAddress + '/instrument_reservation')
+      .toPromise();
+  }
+
+  fetchInstrumentReservation(id: number): Promise<any> {
+    return this.http.get(serverAddress + '/instrument_reservation' + id)
+      .toPromise();
+  }
+
   saveInstrumentReservation(instrumentReservation: InstrumentReservation): Promise<any> {
     return this.http.post(serverAddress + '/instrument_reservation', instrumentReservation).toPromise();
   }

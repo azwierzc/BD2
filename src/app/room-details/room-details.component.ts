@@ -6,6 +6,10 @@ import {InstrumentModel} from '../instruments/models/InstrumentModel';
 import {InstrumentService} from '../services/instrument.service';
 import {InstrumentTypeService} from '../services/instrumentType.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {RoomReservation} from '../employee-details/models/RoomReservation';
+import {RoomReservationService} from '../services/room-reservation.service';
+import {InstrumentReservationService} from '../services/instrument-reservation.service';
+import {InstrumentReservation} from '../employee-details/models/InstrumentReservation';
 
 
 
@@ -18,6 +22,8 @@ export class RoomDetailsComponent implements OnInit {
   roomId: number;
   room: RoomModel;
   roomsList: RoomModel[];
+  roomReservationsList: RoomReservation[];
+  instrumentReservationsList: InstrumentReservation[];
   isInstrumentReservationOpen = false;
   isRoomReservationOpen = false;
   
@@ -28,7 +34,8 @@ export class RoomDetailsComponent implements OnInit {
   constructor(private instrumentTypesService: InstrumentTypeService,
               private route: ActivatedRoute,
               private roomService: RoomService,
-              private service: InstrumentService,
+              private roomReservationService: RoomReservationService,
+              private instrumentReservationService: InstrumentReservationService,
               private modalService: NgbModal,
               private router: Router) {
   }
@@ -37,6 +44,8 @@ export class RoomDetailsComponent implements OnInit {
     this.roomId = Number(this.route.snapshot.params.id);
     this.roomService.fetchRoom(this.roomId).then((room: RoomModel) => this.room = room);
     this.resolveRooms();
+    this.resolveRoomReservations();
+    this.resolveInstrumentReservations();
   }
 
 
@@ -45,25 +54,27 @@ export class RoomDetailsComponent implements OnInit {
     this.roomService.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list);
   }
 
-  onInstrumentOptionClick() {
-    if (this.isInstrumentReservationOpen === false) {
-      this.isInstrumentReservationOpen = true;
-    } else {
-      this.isInstrumentReservationOpen = false;
-    }
+  resolveRoomReservations() {
+    this.roomReservationService.fetchRoomReservationsList().then((list: RoomReservation[]) => this.roomReservationsList = list);
   }
 
-  onRoomOptionClick() {
-    if (this.isRoomReservationOpen === false) {
-      this.isRoomReservationOpen = true;
-    } else {
-      this.isRoomReservationOpen = false;
-    }
+  resolveInstrumentReservations() {
+    this.instrumentReservationService.fetchInstrumentReservationsList().then((list: InstrumentReservation[]) => this.instrumentReservationsList = list);
   }
 
 
   onBackClick() {
     this.router.navigate(['rooms']);
+  }
+
+  getDate(date: Date) {
+    const newdate = new Date(date);
+    return newdate.toLocaleDateString();
+  }
+
+  getTime(date: Date) {
+    const newdate = new Date(date);
+    return newdate.toLocaleTimeString();
   }
 
 }

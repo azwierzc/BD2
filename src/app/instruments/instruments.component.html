@@ -1,8 +1,8 @@
 <div class="d-flex">
   <div class="card mx-auto" style="width: 95%;">
     <div class="card-header d-flex">
-      <h4>Available Instruments</h4>
-      <div class="btn btn-primary mr-4 ml-auto" (click)="onAddInstrumentClick(modal)"> Add Instrument</div>
+      <h4>Dostępne urządzenia</h4>
+      <div class="btn btn-primary mr-4 ml-auto" (click)="onAddInstrumentClick(modal)"> Dodaj urządzenie</div>
     </div>
     <div *ngFor="let instrument of instrumentsList">
       <app-instrument-item [instrument]="instrument" (deleteEvent)="onDeleteEvent($event)" (detailsEvent)="onDetailsEvent($event)"></app-instrument-item>
@@ -13,7 +13,7 @@
 
 <ng-template #modal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add instrument form</h4>
+    <h4 class="modal-title" id="modal-basic-title">Dodaj urządzenie</h4>
   </div>
   <div class="modal-body">
     <form>
@@ -21,13 +21,13 @@
           <!-- Dodać datepickery-->
         <div class="input-group mt-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Serial Number</span>
+            <span class="input-group-text">Numer seryjny</span>
           </div>
           <input type="text" [(ngModel)]="instrumentToAdd.serialNumber" name="serialNumber">
         </div>
         <div class="input-group mt-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Instrument Type</span>
+            <span class="input-group-text">Typ urządzenia</span>
           </div>
           <input type="text" [(ngModel)]="instrumentToAdd.type" name="type">
         </div>
@@ -35,7 +35,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <div class="btn btn-secondary ml-auto" (click)="modal.close()">Cancel</div>
-    <div class="btn btn-primary " (click)="saveReport(modal)">Save</div>
+    <div class="btn btn-secondary ml-auto" (click)="modal.close()">Zamknij</div>
+    <div class="btn btn-primary " (click)="saveReport(modal)">Zapisz</div>
   </div>
 </ng-template>

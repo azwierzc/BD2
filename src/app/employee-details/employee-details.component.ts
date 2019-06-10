@@ -1,12 +1,10 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EmployeeService} from '../services/employee.service';
 import {EmployeeModel} from '../employees/models/EmployeeModel';
 import {InstrumentModel} from '../instruments/models/InstrumentModel';
-
 import {InstrumentService} from '../services/instrument.service';
 import {InstrumentTypeService} from '../services/instrumentType.service';
-
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RoomReservationComponent} from './room-reservation/room-reservation.component';
 import {InstrumentReservationComponent} from './instrument-reservation/instrument-reservation.component';
@@ -23,8 +21,10 @@ export class EmployeeDetailsComponent implements OnInit {
   employee: EmployeeModel;
   instrumentsList: InstrumentModel[];
   roomsList: RoomModel[];
+
   isInstrumentReservationOpen = false;
   isRoomReservationOpen = false;
+
   @Input() instrument: InstrumentModel;
 
   @Output() rentEvent = new EventEmitter<number>();
@@ -71,11 +71,9 @@ export class EmployeeDetailsComponent implements OnInit {
     }
   }
 
-
   onBackClick() {
     this.router.navigate(['employees']);
   }
-
 
   onRentInstrumentClick(id: number) {
     const modelReference = this.modalService.open(InstrumentReservationComponent, {ariaLabelledBy: 'modal-basic-title'});
@@ -88,7 +86,5 @@ export class EmployeeDetailsComponent implements OnInit {
     modelReference.componentInstance.employeeId = this.employeeId;
     modelReference.componentInstance.roomId = id;
   }
-
 }
-
 

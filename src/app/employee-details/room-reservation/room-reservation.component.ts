@@ -9,14 +9,17 @@ import {RoomReservationService} from '../../services/room-reservation.service';
   templateUrl: './room-reservation.component.html',
   styleUrls: ['./room-reservation.component.css']
 })
-
-
 export class RoomReservationComponent implements OnInit {
   roomReservation: RoomReservation;
+
   @Input() employeeId: number;
   @Input() roomId: number;
 
-  constructor(private activeModal: NgbActiveModal, private route: ActivatedRoute, private service: RoomReservationService) {
+  constructor(
+    private activeModal: NgbActiveModal,
+    private route: ActivatedRoute,
+    private service: RoomReservationService
+  ) {
   }
 
   ngOnInit() {
@@ -30,13 +33,11 @@ export class RoomReservationComponent implements OnInit {
     this.activeModal.close();
   }
 
-  getDate(date: Date) {
-    const newdate = new Date(date);
-    return newdate.toLocaleDateString();
+  getDate(date: Date): string {
+    return date.toLocaleDateString();
   }
 
-  getTime(date: Date) {
-    const newdate = new Date(date);
-    return newdate.toLocaleTimeString();
+  getTime(date: Date): string {
+    return date.toLocaleTimeString();
   }
 }

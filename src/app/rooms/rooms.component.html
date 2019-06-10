@@ -5,11 +5,11 @@
       <div class="btn btn-primary mr-4 ml-auto" (click)="onAddRoomClick(modal)"> Dodaj salę</div>
     </div>
     <div *ngFor="let room of roomsList">
-      <app-room-item [room]="room" (deleteEvent)="onDeleteEvent($event)" (detailsEvent)="onDetailsEvent($event)"></app-room-item>
+      <app-room-item [room]="room" (deleteEvent)="onDeleteEvent($event)"
+                     (detailsEvent)="onDetailsEvent($event)"></app-room-item>
     </div>
   </div>
 </div>
-
 
 <ng-template #modal let-modal>
   <div class="modal-header">
@@ -18,7 +18,6 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <!-- Dodać datepickery-->
         <div class="input-group mt-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Numer</span>

@@ -15,10 +15,10 @@ export class RoomsComponent implements OnInit {
   roomsList: RoomModel[];
   roomToAdd: RoomToAddModel;
 
-
-  constructor(private service: RoomService,
-              private modalService: NgbModal,
-              private router: Router
+  constructor(
+    private service: RoomService,
+    private modalService: NgbModal,
+    private router: Router
   ) {
   }
 
@@ -47,5 +47,4 @@ export class RoomsComponent implements OnInit {
     this.service.saveRoom(this.roomToAdd).then(() => this.resolveRooms());
     modal.close();
   }
-
 }

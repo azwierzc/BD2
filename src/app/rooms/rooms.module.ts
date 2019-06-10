@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RoomsComponent} from './rooms.component';
-import {RoomItemComponent } from './room-item/room-item.component';
+import {RoomItemComponent} from './room-item/room-item.component';
 import {FormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
 
@@ -19,4 +19,5 @@ import {NgSelectModule} from '@ng-select/ng-select';
     NgSelectModule
   ]
 })
-export class RoomsModule { }
+export class RoomsModule {
+}

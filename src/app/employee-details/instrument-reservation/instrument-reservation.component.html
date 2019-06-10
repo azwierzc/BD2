@@ -1,10 +1,10 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">Add instrument reservation</h4>
 </div>
+
 <div class="modal-body" *ngIf="instrumentReservation">
   <form>
     <div class="form-group">
-
       <div class="mt-3">
         <dl-date-time-picker
           name="Reservation start"
@@ -30,10 +30,14 @@
 </div>
 
 <div class="card-title ml-4">Od:
-  <div class="card-title mr-auto ml-4" *ngIf="instrumentReservation.startTimestamp"> {{getDate(instrumentReservation.startTimestamp)}} {{getTime(instrumentReservation.startTimestamp)}}</div>
+  <div class="card-title mr-auto ml-4" *ngIf="instrumentReservation.startTimestamp">
+    {{getDate(instrumentReservation.startTimestamp)}} {{getTime(instrumentReservation.startTimestamp)}}
+  </div>
 </div>
 <div class="card-title ml-4">Do:
-  <div class="card-title mr-auto ml-4" *ngIf="instrumentReservation.endTimestamp">{{getDate(instrumentReservation.endTimestamp)}} {{getTime(instrumentReservation.endTimestamp)}}</div>
+  <div class="card-title mr-auto ml-4" *ngIf="instrumentReservation.endTimestamp">
+    {{getDate(instrumentReservation.endTimestamp)}} {{getTime(instrumentReservation.endTimestamp)}}
+  </div>
 </div>
 
 <div class="modal-footer">

@@ -25,5 +25,4 @@ export class RoomItemComponent implements OnInit {
   onDetailsClick() {
     this.detailsEvent.emit(this.room.id);
   }
-
 }

@@ -20,7 +20,7 @@ export class RoomReservationService {
     return this.http.get(serverAddress + '/room_reservation' + id)
       .toPromise();
   }
-  
+
   saveRoomReservation(roomReservation: RoomReservation): Promise<any> {
     return this.http.post(serverAddress + '/room_reservation', roomReservation).toPromise();
   }

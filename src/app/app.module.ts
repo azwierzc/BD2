@@ -11,12 +11,10 @@ import {LoginComponent} from './login/login.component';
 import {AuthInterceptor} from './AuthInterceptor';
 import {EmployeeDetailsModule} from './employee-details/employee-details.module';
 import {IntrumentsModule} from './instruments/intruments.module';
-import { NavComponent } from './nav/nav.component';
-import { HomeComponent } from './home/home.component';
-import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import {NavComponent} from './nav/nav.component';
+import {HomeComponent} from './home/home.component';
+import {DlDateTimeDateModule, DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
 import {RoomsModule} from './rooms/rooms.module';
-
-import { RoomDetailsComponent } from './room-details/room-details.component';
 import {RoomDetailsModule} from './room-details/room-details.module';
 
 @NgModule({
@@ -24,15 +22,7 @@ import {RoomDetailsModule} from './room-details/room-details.module';
     AppComponent,
     LoginComponent,
     NavComponent,
-
     HomeComponent,
-
-  //  RoomDetailsComponent,
-
-    // * RoomsComponent,
-
-    // *EmployeeDetailsComponent,
-    // * InstrumentsComponent,
   ],
   imports: [
     BrowserModule,

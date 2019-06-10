@@ -11,9 +11,16 @@ import {InstrumentReservationService} from '../../services/instrument-reservatio
 })
 export class InstrumentReservationComponent implements OnInit {
   instrumentReservation: InstrumentReservation;
+
   @Input() employeeId: number;
   @Input() instrumentId: number;
-  constructor(private activeModal: NgbActiveModal, private route: ActivatedRoute, private service: InstrumentReservationService) { }
+
+  constructor(
+    private activeModal: NgbActiveModal,
+    private route: ActivatedRoute,
+    private service: InstrumentReservationService
+  ) {
+  }
 
   ngOnInit() {
     this.instrumentReservation = new InstrumentReservation();
@@ -26,13 +33,11 @@ export class InstrumentReservationComponent implements OnInit {
     this.activeModal.close();
   }
 
-  getDate(date: Date) {
-    const newdate = new Date(date);
-    return newdate.toLocaleDateString();
+  getDate(date: Date): string {
+    return date.toLocaleDateString();
   }
 
-  getTime(date: Date) {
-    const newdate = new Date(date);
-    return newdate.toLocaleTimeString();
+  getTime(date: Date): string {
+    return date.toLocaleTimeString();
   }
 }

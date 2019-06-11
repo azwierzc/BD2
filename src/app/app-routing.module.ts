@@ -4,8 +4,9 @@ import { HomeComponent } from './home/home.component';
 import {EmployeesComponent} from './employees/employees.component';
 import {LoginComponent} from './login/login.component';
 import {EmployeeDetailsComponent} from './employee-details/employee-details.component';
-
 import {InstrumentsComponent} from './instruments/instruments.component';
+import {InstrumentDetailsComponent} from './instrument-details/instrument-details.component';
+
 import {RoomsComponent} from './rooms/rooms.component';
 import {RoomDetailsComponent} from './room-details/room-details.component';
 
@@ -26,6 +27,11 @@ const routes: Routes = [
     path: 'instruments',
     component: InstrumentsComponent
   },
+  {
+    path: 'instruments/:id',
+    component: InstrumentDetailsComponent,
+  },
+
   { path: '', component: HomeComponent },
   { path: 'rooms', component: RoomsComponent },
   {

@@ -39,7 +39,7 @@ export class InstrumentsComponent implements OnInit {
   }
 
   onDetailsEvent(id: number) {
-    this.router.navigate(['Instruments/' + id]);
+    this.router.navigate(['instruments/' + id]);
   }
 
   onAddInstrumentClick(modal) {

@@ -20,7 +20,7 @@ export class RoomDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private roomReservationService: RoomReservationService,
     private roomService: RoomService,
-    private router: Router
+    private router: Router,
   ) {
   }
 
@@ -37,6 +37,10 @@ export class RoomDetailsComponent implements OnInit {
 
   onBackClick() {
     this.router.navigate(['rooms']);
+  }
+
+  onDeleteEvent(id: number) {
+    this.roomReservationService.deleteRoomReservation(id).then(() => this.resolveRoomReservations());
   }
 
 

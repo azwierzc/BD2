@@ -13,6 +13,8 @@ export class RoomReservationComponent implements OnInit {
   roomReservation: RoomReservation;
 
   @Input() employeeId: number;
+  @Input() employeeName: string;
+  @Input() employeeSurname: string;
   @Input() roomId: number;
 
   constructor(
@@ -25,6 +27,9 @@ export class RoomReservationComponent implements OnInit {
   ngOnInit() {
     this.roomReservation = new RoomReservation();
     this.roomReservation.employeeId = this.employeeId;
+    this.roomReservation.employeeName = this.employeeName;
+    this.roomReservation.employeeSurname = this.employeeSurname;
+
     this.roomReservation.roomId = this.roomId;
   }
 

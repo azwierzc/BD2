@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-body d-flex">
+    <div class="card-title mr-auto ml-4"> Indeks pracownika: {{roomReservation.employeeId}} </div>
+    <div class="card-title mr-auto ml-4"> Imię pracownika: {{roomReservation.employeeName}} </div>
+    <div class="card-title mr-auto ml-4"> Nazwisko pracownika: {{roomReservation.employeeSurname}} </div>
+    <div class="card-title mr-auto ml-4"> Od: {{getDate(roomReservation.startTimestamp)}}  {{getTime(roomReservation.startTimestamp)}}</div>
+    <div class="card-title mr-auto ml-4"> Do: {{getDate(roomReservation.endTimestamp)}}  {{getTime(roomReservation.endTimestamp)}}</div>
+    <div class="btn btn-primary mr-4" (click)="onDeleteClick()"> Usuń</div>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import {IntrumentsModule} from './instruments/intruments.module';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import {InstrumentDetailsModule} from './instrument-details/instrument-details.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
     HttpClientModule,
     ReactiveFormsModule,
     IntrumentsModule,
+    InstrumentDetailsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
   ],

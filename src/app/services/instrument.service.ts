@@ -11,13 +11,11 @@ export class InstrumentService {
   constructor(private http: HttpClient) { }
 
   fetchInstrumentsList(): Promise<any> {
-    return this.http.get(serverAddress + '/instruments')
-      .toPromise();
+    return this.http.get(serverAddress + '/instruments').toPromise();
   }
 
   fetchInstrument(id: number): Promise<any> {
-    return this.http.get(serverAddress + '/instruments/' + id)
-      .toPromise();
+    return this.http.get(serverAddress + '/instruments/' + id).toPromise();
   }
 
 

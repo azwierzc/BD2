@@ -1,5 +1,6 @@
 export class RoomReservation {
   id: number;
+
   startTimestamp: Date;
 
   endTimestamp: Date;
@@ -7,4 +8,8 @@ export class RoomReservation {
   employeeId: number;
 
   roomId: number;
+
+  roomNumber: number;
+
+  roomType: string;
 }

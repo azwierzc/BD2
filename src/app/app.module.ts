@@ -15,17 +15,15 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import {InstrumentDetailsModule} from './instrument-details/instrument-details.module';
+import {RoomsModule} from './rooms/rooms.module';
+import {RoomDetailsModule} from './room-details/room-details.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavComponent,
-
     HomeComponent,
-
-    // *EmployeeDetailsComponent,
-    // * InstrumentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +39,8 @@ import {InstrumentDetailsModule} from './instrument-details/instrument-details.m
     HttpClientModule,
     ReactiveFormsModule,
     IntrumentsModule,
+    RoomsModule,
+    RoomDetailsModule,
     InstrumentDetailsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,

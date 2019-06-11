@@ -1,16 +1,14 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EmployeeService} from '../services/employee.service';
 import {EmployeeModel} from '../employees/models/EmployeeModel';
 import {InstrumentModel} from '../instruments/models/InstrumentModel';
-
 import {InstrumentService} from '../services/instrument.service';
 import {InstrumentTypeService} from '../services/instrumentType.service';
-
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RoomReservationComponent} from './room-reservation/room-reservation.component';
 import {InstrumentReservationComponent} from './instrument-reservation/instrument-reservation.component';
-import {Room} from './models/Room';
+import {RoomModel} from './models/RoomModel';
 import {RoomService} from '../services/room.service';
 
 @Component({
@@ -22,9 +20,11 @@ export class EmployeeDetailsComponent implements OnInit {
   employeeId: number;
   employee: EmployeeModel;
   instrumentsList: InstrumentModel[];
-  roomsList: Room[];
+  roomsList: RoomModel[];
+
   isInstrumentReservationOpen = false;
   isRoomReservationOpen = false;
+
   @Input() instrument: InstrumentModel;
 
   @Output() rentEvent = new EventEmitter<number>();
@@ -50,12 +50,13 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   resolveRooms() {
-    this.roomService.fetchRoomsList().then((list: Room[]) => this.roomsList = list);
+    this.roomService.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list);
   }
 
   onInstrumentOptionClick() {
     if (this.isInstrumentReservationOpen === false) {
       this.isInstrumentReservationOpen = true;
+      this.isRoomReservationOpen = false;
     } else {
       this.isInstrumentReservationOpen = false;
     }
@@ -64,16 +65,15 @@ export class EmployeeDetailsComponent implements OnInit {
   onRoomOptionClick() {
     if (this.isRoomReservationOpen === false) {
       this.isRoomReservationOpen = true;
+      this.isInstrumentReservationOpen = false;
     } else {
       this.isRoomReservationOpen = false;
     }
   }
 
-
   onBackClick() {
     this.router.navigate(['employees']);
   }
-
 
   onRentInstrumentClick(id: number) {
     const modelReference = this.modalService.open(InstrumentReservationComponent, {ariaLabelledBy: 'modal-basic-title'});
@@ -86,7 +86,5 @@ export class EmployeeDetailsComponent implements OnInit {
     modelReference.componentInstance.employeeId = this.employeeId;
     modelReference.componentInstance.roomId = id;
   }
-
 }
-
 

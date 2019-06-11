@@ -1,6 +1,7 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">Dodaj rezerwację sali</h4>
 </div>
+
 <div class="modal-body" *ngIf="roomReservation">
   <form>
     <div class="form-group">
@@ -19,6 +20,7 @@
           [(ngModel)]="roomReservation.startTimestamp">
         </dl-date-time-picker>
       </div>
+
       <div class="mt-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Wybierz datę końcową:</span>
@@ -37,7 +39,21 @@
     </div>
   </form>
 </div>
+
+<div class="card-title ml-4">Od:
+  <div class="card-title mr-auto ml-4" *ngIf="roomReservation.startTimestamp">
+    {{getDate(roomReservation.startTimestamp)}} {{getTime(roomReservation.startTimestamp)}}
+  </div>
+</div>
+
+<div class="card-title ml-4">Do:
+  <div class="card-title mr-auto ml-4" *ngIf="roomReservation.endTimestamp">
+    {{getDate(roomReservation.endTimestamp)}} {{getTime(roomReservation.endTimestamp)}}
+  </div>
+</div>
+
 <div class="modal-footer">
   <div class="btn btn-secondary ml-auto" (click)="activeModal.close()">Anuluj</div>
   <div class="btn btn-secondary ml-auto" (click)="onSave()">Zapisz</div>
 </div>
+

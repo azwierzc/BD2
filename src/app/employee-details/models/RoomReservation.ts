@@ -7,6 +7,10 @@ export class RoomReservation {
 
   employeeId: number;
 
+  employeeName: string;
+
+  employeeSurname: string;
+
   roomId: number;
 
   roomNumber: number;

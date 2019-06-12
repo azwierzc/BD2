@@ -10,6 +10,7 @@ import {InstrumentDetailsComponent} from './instrument-details/instrument-detail
 import {RoomsComponent} from './rooms/rooms.component';
 import {RoomDetailsComponent} from './room-details/room-details.component';
 import {ReportsComponent} from './reports/reports.component';
+import {WardsComponent} from './wards/wards.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'rooms', component: RoomsComponent },
   { path: 'reports', component: ReportsComponent },
+  { path: 'wards', component: WardsComponent },
   {
     path: 'rooms/:id',
     component: RoomDetailsComponent,

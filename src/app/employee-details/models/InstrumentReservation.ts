@@ -8,4 +8,6 @@ export class InstrumentReservation {
   employeeName: string;
   employeeSurname: string;
   instrumentId: number;
+  serialNumber: string;
+  instrumentType: string;
 }

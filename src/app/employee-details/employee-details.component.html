@@ -1,7 +1,6 @@
 <div class="btn btn-primary mr-4 mt-0 float-right" (click)="onBackClick()"> Wróć</div>
 
 
-
 <div class="card mt-5" *ngIf="employee">
   <div class="card-header">Szczegóły</div>
   <div class="card-body">
@@ -19,15 +18,16 @@
 
 <h5 class="card-title mr-auto mt-4">Wybierz sprzęt do wypożyczenia lub salę do zarezerwowania</h5>
 
-<div  class="mt-3"></div>
-<ngb-tabset >
+<div class="mt-3"></div>
+<ngb-tabset>
   <ngb-tab>
-    <ng-template ngbTabTitle><b>Sprzęt </b> </ng-template>
+    <ng-template ngbTabTitle><b>Sprzęt </b></ng-template>
     <ng-template ngbTabContent>
       <div *ngFor="let instrument of instrumentsList">
         <div class="card">
           <div class="card-body d-flex">
-            <h5 class="card-title mr-auto ml-4">Urządzenie {{instrument.type}}    Numer seryjny: {{instrument.serialNumber}}</h5>
+            <h5 class="card-title mr-auto ml-4">Urządzenie {{instrument.type}}    Numer
+              seryjny: {{instrument.serialNumber}}</h5>
             <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick(instrument.id)"> Wypożycz</div>
           </div>
         </div>
@@ -36,7 +36,7 @@
   </ngb-tab>
 
   <ngb-tab>
-    <ng-template ngbTabTitle><b>Sale </b> </ng-template>
+    <ng-template ngbTabTitle><b>Sale </b></ng-template>
     <ng-template ngbTabContent>
 
       <div *ngFor="let room of roomsList">
@@ -59,20 +59,19 @@
 
 <ngb-tabset>
   <ngb-tab>
-  <ng-template ngbTabTitle><b>Wypożyczone sprzęty </b> </ng-template>
+    <ng-template ngbTabTitle><b>Wypożyczone sprzęty </b></ng-template>
     <ng-template ngbTabContent>
 
       <div *ngFor="let instrumentReservation of instrumentReservationsList">
-        <div *ngFor="let instrumentReservation of instrumentReservationsList">
-          <app-instrument-reservation-item [instrumentReservation]="instrumentReservation" (deleteEvent)="onDeleteInstrumentReservationEvent($event)"></app-instrument-reservation-item>
-        </div>
-
+          <app-instrument-reservation-item [instrumentReservation]="instrumentReservation"
+                                           [showEmployee]="false"
+                                           (deleteEvent)="onDeleteInstrumentReservationEvent($event)"></app-instrument-reservation-item>
       </div>
     </ng-template>
   </ngb-tab>
 
   <ngb-tab>
-    <ng-template ngbTabTitle><b>Zarezerwowane sale </b> </ng-template>
+    <ng-template ngbTabTitle><b>Zarezerwowane sale </b></ng-template>
     <ng-template ngbTabContent>
 
 
@@ -80,7 +79,7 @@
   </ngb-tab>
 
   <ngb-tab>
-    <ng-template ngbTabTitle><b>Złożone raporty </b> </ng-template>
+    <ng-template ngbTabTitle><b>Złożone raporty </b></ng-template>
     <ng-template ngbTabContent>
 
       <div *ngFor="let report of reportsListToEmployee">

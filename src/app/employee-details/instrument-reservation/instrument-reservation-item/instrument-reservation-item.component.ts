@@ -9,6 +9,7 @@ import {InstrumentReservation} from '../../models/InstrumentReservation';
 })
 export class InstrumentReservationItemComponent implements OnInit {
   @Input() instrumentReservation: InstrumentReservation;
+  @Input() showEmployee: boolean;
 
   @Output() deleteEvent = new EventEmitter<number>();
 

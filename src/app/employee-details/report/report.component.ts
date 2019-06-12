@@ -37,16 +37,15 @@ export class ReportComponent implements OnInit {
 
 
   onSave() {
-    if (this.report.reportType = 'Awaria sprzętu'){
+    if (this.report.reportType === 'Awaria sprzętu') {
       this.report.reportType = 'INSTRUMENT_MALFUNCTION';
-    } else if (this.report.reportType = 'Awaria sali') {
+    } else if (this.report.reportType === 'Awaria sali') {
       this.report.reportType = 'ROOM_MALFUNCTION';
-    } else if (this.report.reportType = 'Brak asortymentu') {
+    } else if (this.report.reportType === 'Brak asortymentu') {
       this.report.reportType = 'SUPPLY_SHORTAGE';
-    } else {
+    } else if (this.report.reportType === 'Pobranie') {
       this.report.reportType = 'WITHDRAWAL';
     }
-
 
     this.service.saveReport(this.report);
     this.router.navigate(['/employees']);

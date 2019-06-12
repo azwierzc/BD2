@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body d-flex">
     <div class="card-title mr-auto" *ngIf="report.employeeId && !isEmployeeView"> <b>Raport:</b> {{report.employeeName}} {{report.employeeSurname}}</div>
-    <div class="card-title mr-auto" *ngIf="report.employeeId && isEmployeeView"> <b>Raport:</b> {{report.reportType}} {{report.creationTimestamp}}</div>
+    <div class="card-title mr-auto" *ngIf="report.employeeId && isEmployeeView"> <b>Raport:</b> {{reportType}} {{report.creationTimestamp}}</div>
     <div class="card-title mr-auto" *ngIf="!report.employeeId"> <b>Raport usuniętego pracownika</b> </div>
     <div type="button" class="btn btn-outline-secondary mr-2" placement="left"
             [ngbPopover]="report.content">

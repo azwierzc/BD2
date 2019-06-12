@@ -1,9 +1,13 @@
-<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="employee">
-  <div class="mb-3"> Imię: {{employee.name}}</div>
-  <div class="mb-3"> Nazwisko: {{employee.surname}}</div>
-  <div class="mb-3" *ngIf="employee.prefix">Tytuł: {{employee.prefix}}</div>
-  <div> Oddział: {{employee.wardName}}</div>
-</h5>
+<div class="card" *ngIf="employee">
+  <div class="card-header">Szczegóły</div>
+  <div class="card-body">
+    <h5 class="card-title"> Pracownik</h5>
+    <p class="card-text mt-3"> Imię: {{employee.name}}</p>
+    <p class="card-text mt-3"> Nazwisko: {{employee.surname}}</p>
+    <p *ngIf="employee.prefix" class="card-text mt-3"> Tytuł: {{employee.prefix}}</p>
+    <p class="mt-3"> Oddział: {{employee.wardName}}</p>
+  </div>
+</div>
 
 <div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onInstrumentOptionClick()"> Wypożycz sprzęt</div>
 <div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onRoomOptionClick()"> Zarezerwuj salę</div>
@@ -13,7 +17,7 @@
   <div *ngFor="let instrument of instrumentsList">
     <div class="card">
       <div class="card-body d-flex">
-        <h5 class="card-title mr-auto ml-4">{{instrument.type}}    Numer seryjny: {{instrument.serialNumber}}</h5>
+        <h5 class="card-title mr-auto ml-4">Urządzenie {{instrument.type}}    Numer seryjny: {{instrument.serialNumber}}</h5>
         <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick(instrument.id)"> Wypożycz</div>
       </div>
     </div>
@@ -24,7 +28,7 @@
   <div *ngFor="let room of roomsList">
     <div class="card">
       <div class="card-body d-flex">
-        <h5 class="card-title mr-auto ml-4">{{room.type}}    Numer sali: {{room.number}}</h5>
+        <h5 class="card-title mr-auto ml-4">Sala: {{room.type}}    Numer: {{room.number}}</h5>
         <div class="btn btn-primary mr-4" (click)="onRentRoomClick(room.id)"> Zarezerwuj</div>
       </div>
     </div>

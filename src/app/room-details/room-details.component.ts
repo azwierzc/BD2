@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {RoomReservation} from '../employee-details/models/RoomReservation';
 import {RoomReservationService} from '../services/room-reservation.service';
+import {RoomModel} from '../rooms/models/RoomModel';
+import {RoomService} from '../services/room.service';
+import {InstrumentModel} from '../instruments/models/InstrumentModel';
 
 @Component({
   selector: 'app-room-details',
@@ -10,17 +13,25 @@ import {RoomReservationService} from '../services/room-reservation.service';
 })
 export class RoomDetailsComponent implements OnInit {
   roomId: number;
+  room: RoomModel;
   roomReservationsList: RoomReservation[];
 
   constructor(
     private route: ActivatedRoute,
-    private roomReservationService: RoomReservationService
+    private service: RoomService,
+    private roomReservationService: RoomReservationService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
     this.roomId = Number(this.route.snapshot.params.id);
+    this.service.fetchRoom(this.roomId).then((room: RoomModel) => this.room = room);
     this.resolveRoomReservations();
+  }
+
+  onBackClick() {
+    this.router.navigate(['rooms']);
   }
 
   resolveRoomReservations() {

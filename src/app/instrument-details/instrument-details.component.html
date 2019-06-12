@@ -1,9 +1,13 @@
-<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="instrument">
-  <div> Typ: {{instrument.type}}</div>
-  <div> Id: {{instrument.id}}</div>
-  <div> Numer seryjny:{{instrument.serialNumber}}</div>
-  <div> Ostatni przegląd: {{instrument.lastCheckTimestamp}}</div>
-  <div>{{instrument.checkPeriod}} </div>
-</h5>
+<div class="card" *ngIf="instrument">
+  <div class="card-header">Szczegóły</div>
+  <div class="card-body">
+    <h5 class="card-title"> Urządzenie</h5>
+    <p class="card-text mt-3"> Id: {{instrument.id}}</p>
+    <p class="card-text mt-3"> Typ: {{instrument.type}}</p>
+    <p class="card-text"> Numer seryjny: {{instrument.serialNumber}}</p>
+    <p *ngIf="instrument.lastCheckTimestamp" class="card-text mt-3"> Ostatni przegląd: {{instrument.lastCheckTimestamp}}</p>
+    <p *ngIf="instrument.checkPeriod" class="mt-3"> Okres ważności przeglądu: {{instrument.checkPeriod}}</p>
+  </div>
+</div>
 
 <div class="btn btn-primary mr-4 mt-4" (click)="onBackClick()"> Wróć</div>

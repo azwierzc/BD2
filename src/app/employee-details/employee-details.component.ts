@@ -32,6 +32,7 @@ export class EmployeeDetailsComponent implements OnInit {
   roomsList: RoomModel[];
   report: ReportModel;
   reportsList: ReportModel[];
+  reportsListToEmployee: ReportModel[];
   roomReport: RoomReportModel;
   instrumentReport: InstrumentReportModel;
   roomReportsList: RoomReportModel[];
@@ -65,7 +66,8 @@ export class EmployeeDetailsComponent implements OnInit {
     this.resolveRooms();
     this.resolveRoomReservations();
     this.resolveInstrumentReservations();
-    this.resolveReports();
+    // this.resolveReports();
+    this.resolveReportsToEmployee();
     this.report = new ReportModel();
     // this.resolveRoomReports();
     //  this.resolveInstrumentReports();
@@ -83,7 +85,14 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   resolveReports() {
-    this.reportService.fetchReportsList().then((list: ReportModel[]) => this.reportsList = list);
+    this.reportService.fetchReportsList().then((list: ReportModel[]) => this.reportsList = list.filter((report) => report.employeeId === this.employeeId));
+  }
+
+
+  resolveReportsToEmployee() {
+    this.reportService.fetchReportsListToEmployee(this.employeeId)
+      .then((list: ReportModel[]) => this.reportsListToEmployee = list)
+      .then(() => console.log(this.reportsListToEmployee));
   }
 
 

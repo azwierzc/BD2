@@ -88,7 +88,7 @@
     <ng-template ngbTabTitle><b>Złożone raporty </b> </ng-template>
     <ng-template ngbTabContent>
 
-      <div *ngFor="let report of reportsList">
+      <div *ngFor="let report of reportsListToEmployee">
         <app-report-item [report]="report" (deleteEvent)="onDeleteReportEvent($event)"></app-report-item>
       </div>
 

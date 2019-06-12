@@ -35,6 +35,8 @@ export class EmployeeDetailsComponent implements OnInit {
   reportsListToEmployee: ReportModel[];
   roomReservationsList: RoomReservation[];
   instrumentReservationsList: InstrumentReservation[];
+  isInstrumentViewOpen = false;
+  isRoomViewOpen = false;
 
 
   @Input() instrument: InstrumentModel;
@@ -113,10 +115,10 @@ export class EmployeeDetailsComponent implements OnInit {
     modelReference.componentInstance.roomId = id;
   }
 
-  onAddInstrumentReportClick() {
+
+  onAddReportClick() {
     const modelReference = this.modalService.open(ReportComponent, {ariaLabelledBy: 'modal-basic-title'});
     modelReference.componentInstance.employeeId = this.employeeId;
-    modelReference.componentInstance.type = 'INSTRUMENT_MALFUNCTION';
   }
 
   onDeleteReportEvent(id: number) {

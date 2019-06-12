@@ -140,22 +140,11 @@ export class EmployeeDetailsComponent implements OnInit {
    modelReference.componentInstance.roomId = id;
   }
 
-  onAddRoomReportClick() {
+
+  onAddReportClick() {
     const modelReference = this.modalService.open(ReportComponent, {ariaLabelledBy: 'modal-basic-title'});
     modelReference.componentInstance.employeeId = this.employeeId;
-    modelReference.componentInstance.type = 'ROOM_MALFUNCTION';
   }
-
-  onAddInstrumentReportClick() {
-    const modelReference = this.modalService.open(ReportComponent, {ariaLabelledBy: 'modal-basic-title'});
-    modelReference.componentInstance.employeeId = this.employeeId;
-    modelReference.componentInstance.type = 'INSTRUMENT_MALFUNCTION';
-  }
-
- // saveReport(modal) {
- //   this.reportService.saveReport(this.report).then(() => this.resolveReports());
- //   modal.close();
- // }
 
 
   onDeleteReportEvent(id: number) {

@@ -12,6 +12,7 @@ import {ReportService} from '../../services/report.service';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
+  reportTypeOptions: string[] = ['Awaria sprzętu', 'Awaria sali', 'Brak asortymentu', 'Pobranie'];
   report: ReportModel;
 
   @Input() employeeId: number;

@@ -11,6 +11,7 @@ import {InstrumentReservationItemComponent} from './instrument-reservation/instr
 import {ReportComponent} from './report/report.component';
 import {ReportItemComponent} from './report/report-item/report-item.component';
 import {NgbModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {NgbModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
     DlDateTimePickerModule,
     FormsModule,
     NgbTabsetModule,
-    NgbModule
+    NgbModule,
+    NgSelectModule
   ],
   exports: [
     RoomReservationItemComponent,

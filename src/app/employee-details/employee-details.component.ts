@@ -12,6 +12,12 @@ import {RoomModel} from './models/RoomModel';
 import {RoomService} from '../services/room.service';
 import {RoomReservation} from './models/RoomReservation';
 import {RoomReservationService} from '../services/room-reservation.service';
+import {InstrumentReservationService} from '../services/instrument-reservation.service';
+import {InstrumentReservation} from './models/InstrumentReservation';
+import {RoomReportModel} from './models/RoomReportModel';
+import {RoomReportService} from '../services/room-report.service';
+import {InstrumentReportService} from '../services/instrument-report.service';
+import {InstrumentReportModel} from './models/InstrumentReportModel';
 
 @Component({
   selector: 'app-employee-details',
@@ -23,9 +29,15 @@ export class EmployeeDetailsComponent implements OnInit {
   employee: EmployeeModel;
   instrumentsList: InstrumentModel[];
   roomsList: RoomModel[];
+  roomReport: RoomReportModel;
+  instrumentReport: InstrumentReportModel;
+  roomReportsList: RoomReportModel[];
+  instrumentReportsList: InstrumentReportModel[];
   roomReservationsList: RoomReservation[];
+  instrumentReservationsList: InstrumentReservation[];
   isInstrumentReservationOpen = false;
   isRoomReservationOpen = false;
+
 
   @Input() instrument: InstrumentModel;
 
@@ -36,7 +48,10 @@ export class EmployeeDetailsComponent implements OnInit {
               private employeeService: EmployeeService,
               private service: InstrumentService,
               private roomService: RoomService,
+            //  private roomReportService: RoomReportService,
+            //  private instrumentReportService: InstrumentReportService,
               private roomReservationService: RoomReservationService,
+              private instrumentReservationService: InstrumentReservationService,
               private modalService: NgbModal,
               private router: Router) {
   }
@@ -47,6 +62,12 @@ export class EmployeeDetailsComponent implements OnInit {
     this.resolveInstruments();
     this.resolveRooms();
     this.resolveRoomReservations();
+    this.resolveInstrumentReservations();
+   // this.resolveRoomReports();
+  //  this.resolveInstrumentReports();
+
+ //   this.roomReport = new RoomReportModel();
+ //  this.instrumentReport = new InstrumentReportModel();
   }
 
   resolveInstruments() {
@@ -56,7 +77,15 @@ export class EmployeeDetailsComponent implements OnInit {
   resolveRooms() {
     this.roomService.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list);
   }
+/*
+  resolveRoomReports() {
+    this.roomReportService.fetchRoomReportsList().then((list: RoomReportModel[]) => this.roomReportsList = list);
+  }
 
+  resolveInstrumentReports() {
+    this.instrumentReportService.fetchInstrumentReportsList().then((list: InstrumentReportModel[]) => this.instrumentReportsList = list);
+  }
+*/
   onInstrumentOptionClick() {
     if (this.isInstrumentReservationOpen === false) {
       this.isInstrumentReservationOpen = true;
@@ -84,6 +113,10 @@ export class EmployeeDetailsComponent implements OnInit {
       .then((list: RoomReservation[]) => this.roomReservationsList = list.filter((reservation) => reservation.employeeId === this.employeeId));
   }
 
+  resolveInstrumentReservations() {
+    this.instrumentReservationService.fetchInstrumentReservationsList()
+      .then((list: InstrumentReservation[]) => this.instrumentReservationsList = list.filter((reservation) => reservation.employeeId === this.employeeId));
+  }
 
   onRentInstrumentClick(id: number) {
     const modelReference = this.modalService.open(InstrumentReservationComponent, {ariaLabelledBy: 'modal-basic-title'});
@@ -97,6 +130,18 @@ export class EmployeeDetailsComponent implements OnInit {
     modelReference.componentInstance.roomId = id;
   }
 
+/*
+  saveRoomReport(modal) {
+    this.roomReportService.saveRoomReport(this.roomReport).then(() => this.resolveRoomReports());
+    modal.close();
+  }
+
+  saveInstrumentReport(modal) {
+    this.instrumentReportService.saveInstrumentReport(this.instrumentReport).then(() => this.resolveInstrumentReports());
+    modal.close();
+  }
+  */
+  
   public getDate(date: Date): string {
     const newDate = new Date(date);
     return newDate.toLocaleDateString();

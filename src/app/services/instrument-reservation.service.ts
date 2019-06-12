@@ -21,6 +21,10 @@ export class InstrumentReservationService {
       .toPromise();
   }
 
+  deleteInstrumentReservation(id: number): Promise<any>  {
+    return this.http.delete(serverAddress + '/instrument_reservation' + '/' + id).toPromise();
+  }
+
   saveInstrumentReservation(instrumentReservation: InstrumentReservation): Promise<any> {
     return this.http.post(serverAddress + '/instrument_reservation', instrumentReservation).toPromise();
   }

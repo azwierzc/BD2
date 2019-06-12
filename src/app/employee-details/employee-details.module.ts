@@ -7,14 +7,22 @@ import {DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
 import {FormsModule} from '@angular/forms';
 import { InstrumentReservationComponent } from './instrument-reservation/instrument-reservation.component';
 import { RoomReservationItemComponent } from './room-reservation/room-reservation-item/room-reservation-item.component';
+import { InstrumentReservationItemComponent } from './instrument-reservation/instrument-reservation-item/instrument-reservation-item.component';
+import {RoomReportComponent} from './room-report/room-report.component';
+import { InstrumentReportComponent } from './instrument-report/instrument-report.component';
 
 @NgModule({
   declarations: [
     EmployeeDetailsComponent,
     EmployeeDetailsComponent,
     RoomReservationComponent,
+    RoomReportComponent,
+    InstrumentReportComponent,
     InstrumentReservationComponent,
-    RoomReservationItemComponent
+    RoomReservationItemComponent,
+    InstrumentReservationItemComponent,
+    RoomReportComponent,
+    InstrumentReportComponent
   ],
   imports: [
     CommonModule,
@@ -24,11 +32,16 @@ import { RoomReservationItemComponent } from './room-reservation/room-reservatio
     FormsModule
   ],
   exports: [
-    RoomReservationItemComponent
+    RoomReservationItemComponent,
+    InstrumentReservationItemComponent,
+    // RoomReportComponent,
+    // InstrumentReportComponent
   ],
   entryComponents: [
     RoomReservationComponent,
-    InstrumentReservationComponent
+    InstrumentReservationComponent,
+    RoomReportComponent,
+    InstrumentReportComponent
 
   ]
 })

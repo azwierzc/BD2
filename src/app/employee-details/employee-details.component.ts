@@ -121,6 +121,16 @@ export class EmployeeDetailsComponent implements OnInit {
     modelReference.componentInstance.employeeId = this.employeeId;
   }
 
+  onDeleteInstrumentReservationEvent(id: number) {
+    this.instrumentReservationService.deleteInstrumentReservation(id)
+      .then(() => this.resolveInstrumentReservations());
+  }
+
+  onDeleteRoomReservationEvent(id: number) {
+    this.roomReservationService.deleteRoomReservation(id)
+      .then(() => this.resolveRoomReservations());
+  }
+
   onDeleteReportEvent(id: number) {
     this.reportService.deleteReport(id).then(() => this.resolveReports());
   }

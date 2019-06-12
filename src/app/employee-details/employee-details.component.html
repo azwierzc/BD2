@@ -76,7 +76,7 @@
       <div *ngFor="let roomReservation of roomReservationsList">
         <app-room-reservation-item [roomReservation]="roomReservation"
                                          [isRoomView]="false"
-                                         (deleteEvent)="onDeleteInstrumentReservationEvent($event)"></app-room-reservation-item>
+                                         (deleteEvent)="onDeleteRoomReservationEvent($event)"></app-room-reservation-item>
       </div>
     </ng-template>
   </ngb-tab>

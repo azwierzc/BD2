@@ -86,7 +86,7 @@
     <ng-template ngbTabContent>
 
       <div *ngFor="let report of reportsListToEmployee">
-        <app-report-item [report]="report" (deleteEvent)="onDeleteReportEvent($event)"></app-report-item>
+        <app-report-item [report]="report" [isEmployeeView]="true" (deleteEvent)="onDeleteReportEvent($event)"></app-report-item>
       </div>
 
     </ng-template>

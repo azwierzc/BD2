@@ -3,10 +3,8 @@ export class ReportModel {
   creationTimestamp: Date;
   closed: boolean;
   content: string;
-  type: string;
+  reportType: string;
   employeeId: number;
   employeeName: string;
   employeeSurname: string;
-
-
 }

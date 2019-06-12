@@ -2,13 +2,12 @@
 
 
 <div class="card mt-5" *ngIf="employee">
-  <div class="card-header">Szczegóły</div>
+  <div class="card-header"><b>Pracownik</b> - Szczegóły</div>
   <div class="card-body">
-    <h5 class="card-title"> Pracownik</h5>
-    <p class="card-text mt-3"> Imię: {{employee.name}}</p>
-    <p class="card-text mt-3"> Nazwisko: {{employee.surname}}</p>
-    <p *ngIf="employee.prefix" class="card-text mt-3"> Tytuł: {{employee.prefix}}</p>
-    <p class="mt-3"> Oddział: {{employee.wardName}}</p>
+    <p class="card-text mt-3"> <b>Imię:</b> {{employee.name}}</p>
+    <p class="card-text mt-3"> <b>Nazwisko:</b> {{employee.surname}}</p>
+    <p *ngIf="employee.prefix" class="card-text mt-3"> <b>Tytuł:</b> {{employee.prefix}}</p>
+    <p class="mt-3"> <b>Oddział:</b> {{employee.wardName}}</p>
   </div>
 </div>
 

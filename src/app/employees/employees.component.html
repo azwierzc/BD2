@@ -2,10 +2,13 @@
   <div class="card mx-auto" style="width: 95%;">
     <div class="card-header d-flex">
       <h4 class="mt-2">Pracownicy</h4>
-      <div class="btn btn-primary mr-4 ml-auto" *ngIf="wardsList" (click)="onAddEmployeeClick(modal)"> Dodaj pracownika</div>
+      <div class="btn btn-primary mr-4 ml-auto" *ngIf="wardsList" (click)="onAddEmployeeClick(modal)"> Dodaj
+        pracownika
+      </div>
     </div>
     <div *ngFor="let employee of employeesList">
-      <app-employee-item [employee]="employee" (deleteEvent)="onDeleteEvent($event)" (detailsEvent)="onDetailsEvent($event)"></app-employee-item>
+      <app-employee-item [employee]="employee" (deleteEvent)="onDeleteEvent($event)"
+                         (detailsEvent)="onDetailsEvent($event)"></app-employee-item>
     </div>
   </div>
 </div>
@@ -36,26 +39,16 @@
           </div>
           <input type="text" [(ngModel)]="employeeToAdd.prefix" name="prefix">
         </div>
-        <div class="input-group mt-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Typ pracownika</span>
-          </div>
-          <div class="input-group-append">
-            <ng-select class="mt-3" size="8" [items]="employeeTypeOptions"
-                       name="type"
-                       [(ngModel)]="employeeToAdd.type">
-            </ng-select>
-          </div>
-        </div>
-        <div class="input-group mt-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Oddział</span>
-          </div>
-        </div>
+        <ng-select class="mt-3" [items]="employeeTypeOptions"
+                   name="type"
+                   placeholder="Wybierz typ pracownika"
+                   [(ngModel)]="employeeToAdd.type">
+        </ng-select>
         <ng-select class="mt-3" [items]="wardsList"
                    name="ward"
                    bindLabel="name"
                    bindValue="id"
+                   placeholder="Wybierz oddział"
                    [(ngModel)]="employeeToAdd.wardId">
         </ng-select>
       </div>

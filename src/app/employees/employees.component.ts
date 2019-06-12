@@ -29,7 +29,6 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit() {
     this.employeeToAdd = new EmployeeToAddModel();
-    this.employeeToAdd.wardId = 1; // TODO: Remove this statically selected ward
     this.resolveEmployees();
     this.resolveWards();
   }

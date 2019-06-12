@@ -17,6 +17,7 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
 import {InstrumentDetailsModule} from './instrument-details/instrument-details.module';
 import {RoomsModule} from './rooms/rooms.module';
 import {RoomDetailsModule} from './room-details/room-details.module';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {RoomDetailsModule} from './room-details/room-details.module';
     LoginComponent,
     NavComponent,
     HomeComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,

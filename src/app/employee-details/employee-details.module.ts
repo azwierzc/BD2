@@ -1,28 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {EmployeeDetailsComponent} from './employee-details.component';
 import {IntrumentsModule} from '../instruments/intruments.module';
-import { RoomReservationComponent } from './room-reservation/room-reservation.component';
+import {RoomReservationComponent} from './room-reservation/room-reservation.component';
 import {DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
 import {FormsModule} from '@angular/forms';
-import { InstrumentReservationComponent } from './instrument-reservation/instrument-reservation.component';
-import { RoomReservationItemComponent } from './room-reservation/room-reservation-item/room-reservation-item.component';
-import { InstrumentReservationItemComponent } from './instrument-reservation/instrument-reservation-item/instrument-reservation-item.component';
-import {RoomReportComponent} from './room-report/room-report.component';
-import { InstrumentReportComponent } from './instrument-report/instrument-report.component';
+import {InstrumentReservationComponent} from './instrument-reservation/instrument-reservation.component';
+import {RoomReservationItemComponent} from './room-reservation/room-reservation-item/room-reservation-item.component';
+import {InstrumentReservationItemComponent} from './instrument-reservation/instrument-reservation-item/instrument-reservation-item.component';
+import {ReportComponent} from './report/report.component';
+import {ReportItemComponent} from './report/report-item/report-item.component';
 
 @NgModule({
   declarations: [
     EmployeeDetailsComponent,
     EmployeeDetailsComponent,
     RoomReservationComponent,
-    RoomReportComponent,
-    InstrumentReportComponent,
     InstrumentReservationComponent,
     RoomReservationItemComponent,
     InstrumentReservationItemComponent,
-    RoomReportComponent,
-    InstrumentReportComponent
+    ReportComponent,
+    ReportItemComponent
   ],
   imports: [
     CommonModule,
@@ -34,15 +32,15 @@ import { InstrumentReportComponent } from './instrument-report/instrument-report
   exports: [
     RoomReservationItemComponent,
     InstrumentReservationItemComponent,
+    ReportItemComponent
     // RoomReportComponent,
     // InstrumentReportComponent
   ],
   entryComponents: [
     RoomReservationComponent,
     InstrumentReservationComponent,
-    RoomReportComponent,
-    InstrumentReportComponent
-
+    ReportComponent,
   ]
 })
-export class EmployeeDetailsModule { }
+export class EmployeeDetailsModule {
+}

@@ -6,7 +6,11 @@
 <div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onRoomOptionClick()"> Sale</div>
 <div class="btn btn-primary mr-4 mt-4 float-right" (click)="onBackClick()"> Wróć</div>
 
-<div *ngIf="isInstrumentReservationOpen">
+<div *ngIf="isInstrumentViewOpen">
+
+  <div class=" mr-4 mt-10"></div>
+  <div class="btn btn-primary mr-4 mt-10" (click)="onAddInstrumentReportClick()"> Złóż raport dla sprzętu</div>
+
   <div *ngFor="let instrument of instrumentsList">
     <div class="card">
       <div class="card-body d-flex">
@@ -18,7 +22,10 @@
   </div>
 </div>
 
-<div *ngIf="isRoomReservationOpen">
+<div class="card-title mt-10 "*ngIf="isRoomViewOpen">
+  <div class="btn btn-primary mr-4 mt-10" (click)="onAddRoomReportClick()"> Złóż raport dla sali</div>
+
+
   <div *ngFor="let room of roomsList">
     <div class="card">
       <div class="card-body d-flex">
@@ -30,7 +37,7 @@
   </div>
 </div>
 
-<div> Zarezerwowane sprzęty: </div>
+<div class="card-title"> Zarezerwowane sprzęty:</div>
 <div *ngFor="let instrumentReservation of instrumentReservationsList">
   <div class="card">
     <div class="card-body d-flex">
@@ -46,7 +53,7 @@
 </div>
 
 
-<div> Zarezerwowane sale: </div>
+<div> Zarezerwowane sale:</div>
 <div *ngFor="let roomReservation of roomReservationsList">
   <div class="card">
     <div class="card-body d-flex">
@@ -63,9 +70,7 @@
 
 
 
-<ng-template #modal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Złóż raport</h4>
-  </div>
-
-</ng-template>
+<div> Złożone raporty: przez wszystkich pracowników narazie</div>
+<div *ngFor="let report of reportsList">
+  <app-report-item [report]="report" (deleteEvent)="onDeleteReportEvent($event)" ></app-report-item>
+</div>

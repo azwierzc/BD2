@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"  *ngIf="report.type=='ROOM_MALFUNCTION'" >Raport awarii sali</h4>
+  <h4 class="modal-title" id="modal-basic-title2"  *ngIf="report.type=='INSTRUMENT_MALFUNCTION'" >Raport awarii sprzętu</h4>
+
+  </div>
+  <div class="modal-body">
+    <div>
+      <div>
+        <div>
+          <input type="text" style="height: 200px; width: 400px; text-align: start" [(ngModel)]="report.content" name="content">
+        </div>
+      </div>
+
+      <div class="card-title mr-auto ml-4"></div>
+      <h5 class="card-title mr-auto ml-4"> Tymczasowe testy spradzające: </h5>
+      <h5 class="card-title mr-auto ml-4"> Indeks raportu: {{report.id}} </h5>
+      <h5 class="card-title mr-auto ml-4"> Typ raportu: {{report.type}} </h5>
+      <h5 class="card-title mr-auto ml-4"> Indeks pracownika: {{report.employeeId}} </h5>
+      <h5 class="card-title mr-auto ml-4"> Treść raportu: {{report.content}} </h5>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="btn btn-secondary ml-auto" (click)="activeModal.close()">Anuluj</div>
+    <div class="btn btn-primary " (click)="onSave()">Zapisz</div>
+  </div>
+
+

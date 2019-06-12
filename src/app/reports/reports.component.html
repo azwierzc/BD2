@@ -1,0 +1,11 @@
+<div class="d-flex">
+  <div class="card mx-auto" style="width: 95%;">
+    <div class="card-header d-flex">
+      <h4>Złożone raporty</h4>
+
+    </div>
+    <div *ngFor="let report of reportsList">
+      <app-report-item [report]="report" (deleteEvent)="onDeleteEvent($event)"></app-report-item>
+    </div>
+  </div>
+</div>

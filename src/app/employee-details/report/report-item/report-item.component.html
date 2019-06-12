@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body d-flex">
+    <div class="card-title mr-auto ml-4"> Indeks raportu: {{report.id}} </div>
+    <div class="card-title mr-auto ml-4"> Indeks pracownika: {{report.employeeId}} </div>
+    <div class="card-title mr-auto ml-4"> Imię pracownika: {{report.employeeName}} </div>
+    <div class="card-title mr-auto ml-4"> Nazwisko pracownika: {{report.employeeSurname}} </div>
+    <div class="card-title mr-auto ml-4"> Treść: {{report.content}}</div>
+
+    <div class="btn btn-primary mr-4" (click)="onDeleteClick()"> Usuń</div>
+  </div>
+</div>

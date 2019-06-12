@@ -9,6 +9,7 @@ import {InstrumentDetailsComponent} from './instrument-details/instrument-detail
 
 import {RoomsComponent} from './rooms/rooms.component';
 import {RoomDetailsComponent} from './room-details/room-details.component';
+import {ReportsComponent} from './reports/reports.component';
 
 const routes: Routes = [
   {
@@ -34,10 +35,12 @@ const routes: Routes = [
 
   { path: '', component: HomeComponent },
   { path: 'rooms', component: RoomsComponent },
+  { path: 'reports', component: ReportsComponent },
   {
     path: 'rooms/:id',
     component: RoomDetailsComponent,
   },
+
 ];
 
 @NgModule({

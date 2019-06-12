@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {RoomReservation} from '../employee-details/models/RoomReservation';
 import {RoomReservationService} from '../services/room-reservation.service';
-import {EmployeeModel} from '../employees/models/EmployeeModel';
 import {RoomModel} from '../rooms/models/RoomModel';
 import {RoomService} from '../services/room.service';
+import {EmployeeModel} from '../employees/models/EmployeeModel';
+import {InstrumentModel} from '../instruments/models/InstrumentModel';
 
 @Component({
   selector: 'app-room-details',

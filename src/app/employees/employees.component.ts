@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  employeeTypeOptions: string[] = ['DOCTOR', 'NURSE'];
+  employeeTypeOptions: string[] = ['Doctor', 'Nurse'];
 
   employeesList: EmployeeModel[];
   employeeToAdd: EmployeeToAddModel;

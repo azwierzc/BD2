@@ -7,6 +7,7 @@ import {DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
 import {FormsModule} from '@angular/forms';
 import {InstrumentReservationComponent} from '../employee-details/instrument-reservation/instrument-reservation.component';
 import {EmployeeDetailsModule} from '../employee-details/employee-details.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {EmployeeDetailsModule} from '../employee-details/employee-details.module
     CommonModule,
     DlDateTimePickerModule,
     FormsModule,
-    EmployeeDetailsModule
+    EmployeeDetailsModule,
+    NgbModule
   ],
   entryComponents: [
     RoomReservationComponent,

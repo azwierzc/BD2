@@ -8,9 +8,9 @@
   </div>
 </div>
 
-<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList.length>0"> Rezerwacje dla sali numer {{room.number}}: </h5>
-<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList.length==0"> Brak rezerwacji dla sali numer {{room.number}}. </h5>
-<div class="card">
+<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="roomReservationsList.length>0"> Rezerwacje dla sali numer {{room.number}}: </h5>
+<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="roomReservationsList.length==0"> Brak rezerwacji dla sali numer {{room.number}}. </h5>
+<div class="card" *ngIf="roomReservationsList.length>0">
   <div class="card-header">Rezerwacje</div>
   <div *ngFor="let roomReservation of roomReservationsList">
     <app-room-reservation-item [roomReservation]="roomReservation" (deleteEvent)="onDeleteEvent($event)"></app-room-reservation-item>

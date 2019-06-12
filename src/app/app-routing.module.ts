@@ -11,6 +11,7 @@ import {RoomsComponent} from './rooms/rooms.component';
 import {RoomDetailsComponent} from './room-details/room-details.component';
 import {ReportsComponent} from './reports/reports.component';
 import {WardsComponent} from './wards/wards.component';
+import {WardDetailsComponent} from './ward-details/ward-details.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'rooms/:id',
     component: RoomDetailsComponent,
+  },
+  {
+    path: 'wards/:id',
+    component: WardDetailsComponent,
   },
 
 ];

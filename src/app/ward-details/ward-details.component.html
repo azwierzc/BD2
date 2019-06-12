@@ -1,0 +1,12 @@
+<div class="card" *ngIf="ward">
+  <div class="card-header">Szczegóły</div>
+  <div class="card-body">
+    <h5 class="card-title"> Oddział</h5>
+    <p class="card-text mt-3"> Id: {{ward.id}}</p>
+    <p class="card-text"> Nazwa: {{ward.name}}</p>
+  </div>
+</div>
+
+
+
+<div class="btn btn-primary mr-4 mt-5" (click)="onBackClick()"> Wróć</div>

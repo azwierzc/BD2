@@ -1,0 +1,34 @@
+<div class="d-flex">
+  <div class="card mx-auto" style="width: 95%;">
+    <div class="card-header d-flex">
+      <h4>Dostępne oddziały</h4>
+      <div class="btn btn-primary mr-4 ml-auto" (click)="onAddWardClick(modal)"> Dodaj oddział</div>
+    </div>
+    <div *ngFor="let ward of wardsList">
+      <app-ward-item [ward]="ward" (deleteEvent)="onDeleteEvent($event)"
+                     (detailsEvent)="onDetailsEvent($event)"></app-ward-item>
+    </div>
+  </div>
+</div>
+
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Formularz dodawania oddziału</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="input-group mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Typ</span>
+          </div>
+          <input type="text" [(ngModel)]="wardToAdd.name" name="name">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="btn btn-secondary ml-auto" (click)="modal.close()">Zamknij</div>
+    <div class="btn btn-primary " (click)="saveReport(modal)">Zapisz</div>
+  </div>
+</ng-template>

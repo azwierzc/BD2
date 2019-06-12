@@ -18,6 +18,10 @@ import {InstrumentDetailsModule} from './instrument-details/instrument-details.m
 import {RoomsModule} from './rooms/rooms.module';
 import {RoomDetailsModule} from './room-details/room-details.module';
 import { ReportsComponent } from './reports/reports.component';
+import { WardsComponent } from './wards/wards.component';
+import { WardItemComponent } from './wards/ward-item/ward-item.component';
+import {WardsModule} from './wards/wards.module';
+import { WardDetailsComponent } from './ward-details/ward-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { ReportsComponent } from './reports/reports.component';
     NavComponent,
     HomeComponent,
     ReportsComponent,
+    WardDetailsComponent,
+    // WardsComponent,
+   // WardItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +50,7 @@ import { ReportsComponent } from './reports/reports.component';
     IntrumentsModule,
     RoomsModule,
     RoomDetailsModule,
+    WardsModule,
     InstrumentDetailsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,

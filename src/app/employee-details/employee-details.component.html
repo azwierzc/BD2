@@ -73,8 +73,11 @@
   <ngb-tab>
     <ng-template ngbTabTitle><b>Zarezerwowane sale </b></ng-template>
     <ng-template ngbTabContent>
-
-
+      <div *ngFor="let roomReservation of roomReservationsList">
+        <app-room-reservation-item [roomReservation]="roomReservation"
+                                         [isRoomView]="false"
+                                         (deleteEvent)="onDeleteInstrumentReservationEvent($event)"></app-room-reservation-item>
+      </div>
     </ng-template>
   </ngb-tab>
 

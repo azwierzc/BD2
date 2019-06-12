@@ -2,18 +2,21 @@
   <div class="card-header">Szczegóły</div>
   <div class="card-body">
     <h5 class="card-title"> Sala</h5>
-      <p class="card-text mt-3"> Id: {{room.id}}</p>
-      <p class="card-text"> Typ: {{room.type}}</p>
-      <p class="card-text mt-3"> Numer: {{room.number}}</p>
+    <p class="card-text mt-3"> Id: {{room.id}}</p>
+    <p class="card-text"> Typ: {{room.type}}</p>
+    <p class="card-text mt-3"> Numer: {{room.number}}</p>
   </div>
 </div>
 
-<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList.length>0"> Rezerwacje dla sali numer {{room.number}}: </h5>
-<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList.length==0"> Brak rezerwacji dla sali numer {{room.number}}. </h5>
+<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList && roomReservationsList.length>0"> Rezerwacje dla sali
+  numer {{room.number}} </h5>
+<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList && roomReservationsList.length==0"> Brak rezerwacji dla
+  sali numer {{room.number}}. </h5>
 <div class="card">
   <div class="card-header">Rezerwacje</div>
   <div *ngFor="let roomReservation of roomReservationsList">
-    <app-room-reservation-item [roomReservation]="roomReservation" (deleteEvent)="onDeleteEvent($event)"></app-room-reservation-item>
+    <app-room-reservation-item [roomReservation]="roomReservation" [isRoomView]="true"
+                               (deleteEvent)="onDeleteEvent($event)"></app-room-reservation-item>
   </div>
 </div>
 

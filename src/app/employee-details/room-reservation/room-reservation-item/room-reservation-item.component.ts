@@ -9,6 +9,7 @@ import {RoomReservation} from '../../models/RoomReservation';
 })
 export class RoomReservationItemComponent implements OnInit {
   @Input() roomReservation: RoomReservation;
+  @Input() isRoomView: boolean;
 
   @Output() deleteEvent = new EventEmitter<number>();
 

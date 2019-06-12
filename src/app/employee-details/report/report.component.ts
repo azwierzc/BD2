@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {ReportModel} from '../models/ReportModel';
 import {ReportService} from '../../services/report.service';
@@ -22,7 +22,8 @@ export class ReportComponent implements OnInit {
   constructor(
     private activeModal: NgbActiveModal,
     private route: ActivatedRoute,
-    private service: ReportService
+    private service: ReportService,
+    private router: Router
   ) {
   }
 
@@ -48,6 +49,7 @@ export class ReportComponent implements OnInit {
 
 
     this.service.saveReport(this.report);
+    this.router.navigate(['/employees']);
     this.activeModal.close();
   }
 

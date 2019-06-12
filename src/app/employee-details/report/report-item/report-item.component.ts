@@ -10,7 +10,7 @@ import {ReportModel} from '../../models/ReportModel';
 })
 export class ReportItemComponent implements OnInit {
   @Input() report: ReportModel;
-
+  @Input() isEmployeeView: boolean;
   @Output() deleteEvent = new EventEmitter<number>();
 
   constructor() {

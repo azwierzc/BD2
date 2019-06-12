@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {RoomReservation} from '../models/RoomReservation';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {RoomReservationService} from '../../services/room-reservation.service';
 
 @Component({
@@ -20,7 +20,8 @@ export class RoomReservationComponent implements OnInit {
   constructor(
     private activeModal: NgbActiveModal,
     private route: ActivatedRoute,
-    private service: RoomReservationService
+    private service: RoomReservationService,
+    private router: Router
   ) {
   }
 
@@ -35,6 +36,7 @@ export class RoomReservationComponent implements OnInit {
 
   onSave() {
     this.service.saveRoomReservation(this.roomReservation);
+    this.router.navigate(['/employees']);
     this.activeModal.close();
   }
 

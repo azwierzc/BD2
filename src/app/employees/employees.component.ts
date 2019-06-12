@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  employeeTypeOptions: string[] = ['DOCTOR', 'NURSE'];
+  employeeTypeOptions: string[] = ['Doktor', 'Pięlęgniarka'];
 
   employeesList: EmployeeModel[];
   employeeToAdd: EmployeeToAddModel;
@@ -54,6 +54,13 @@ export class EmployeesComponent implements OnInit {
   }
 
   saveReport(modal) {
+
+    if (this.employeeToAdd.type === 'Doktor') {
+      this.employeeToAdd.type = 'DOCTOR';
+    } else{
+      this.employeeToAdd.type = 'NURSE';
+    }
+
     this.service.saveEmployee(this.employeeToAdd).then(() => this.resolveEmployees());
     modal.close();
   }

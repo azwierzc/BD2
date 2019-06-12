@@ -13,6 +13,8 @@ export class InstrumentReservationComponent implements OnInit {
   instrumentReservation: InstrumentReservation;
 
   @Input() employeeId: number;
+  @Input() employeeName: string;
+  @Input() employeeSurname: string;
   @Input() instrumentId: number;
 
   constructor(
@@ -25,6 +27,8 @@ export class InstrumentReservationComponent implements OnInit {
   ngOnInit() {
     this.instrumentReservation = new InstrumentReservation();
     this.instrumentReservation.employeeId = this.employeeId;
+    this.instrumentReservation.employeeName = this.employeeName;
+    this.instrumentReservation.employeeSurname = this.employeeSurname;
     this.instrumentReservation.instrumentId = this.instrumentId;
   }
 

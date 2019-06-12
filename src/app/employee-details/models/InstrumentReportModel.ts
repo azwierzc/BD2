@@ -1,11 +1,10 @@
-export class InstrumentReservation {
+export class InstrumentReportModel {
   id: number;
-  startTimestamp: Date;
-
-  endTimestamp: Date;
 
   employeeId: number;
   employeeName: string;
   employeeSurname: string;
   instrumentId: number;
+  content: string;
+
 }

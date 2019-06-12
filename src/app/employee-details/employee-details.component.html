@@ -9,28 +9,75 @@
   </div>
 </div>
 
-<div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onInstrumentOptionClick()"> Wypożycz sprzęt</div>
-<div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onRoomOptionClick()"> Zarezerwuj salę</div>
-<div class="btn btn-primary mr-4 mt-4" (click)="onBackClick()"> Wróć</div>
+<div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onInstrumentOptionClick()"> Sprzęt</div>
+<div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onRoomOptionClick()"> Sale</div>
+<div class="btn btn-primary mr-4 mt-4 float-right" (click)="onBackClick()"> Wróć</div>
 
-<div *ngIf="isInstrumentReservationOpen">
+<div *ngIf="isInstrumentViewOpen">
+
+  <div class=" mr-4 mt-10"></div>
+  <div class="btn btn-primary mr-4 mt-10" (click)="onAddInstrumentReportClick()"> Złóż raport dla sprzętu</div>
+
   <div *ngFor="let instrument of instrumentsList">
     <div class="card">
       <div class="card-body d-flex">
         <h5 class="card-title mr-auto ml-4">Urządzenie {{instrument.type}}    Numer seryjny: {{instrument.serialNumber}}</h5>
         <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick(instrument.id)"> Wypożycz</div>
+
       </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="isRoomReservationOpen">
+<div class="card-title mt-10 "*ngIf="isRoomViewOpen">
+  <div class="btn btn-primary mr-4 mt-10" (click)="onAddRoomReportClick()"> Złóż raport dla sali</div>
+
+
   <div *ngFor="let room of roomsList">
     <div class="card">
       <div class="card-body d-flex">
         <h5 class="card-title mr-auto ml-4">Sala: {{room.type}}    Numer: {{room.number}}</h5>
         <div class="btn btn-primary mr-4" (click)="onRentRoomClick(room.id)"> Zarezerwuj</div>
+
       </div>
     </div>
   </div>
+</div>
+
+<div class="card-title"> Zarezerwowane sprzęty:</div>
+<div *ngFor="let instrumentReservation of instrumentReservationsList">
+  <div class="card">
+    <div class="card-body d-flex">
+      <h5 class="card-title mr-auto ml-4"> Indeks rezerwacji: {{instrumentReservation.id}} </h5>
+      <h5 class="card-title mr-auto ml-4"> Id sprzętu: {{instrumentReservation.instrumentId}} </h5>
+
+      <h5 class="card-title mr-auto ml-4"> Czas rozpoczęcia
+        rezerwacji: {{getDate(instrumentReservation.startTimestamp)}}  {{getTime(instrumentReservation.startTimestamp)}}</h5>
+      <h5 class="card-title mr-auto ml-4"> Czas zakończenia
+        rezerwacji: {{getDate(instrumentReservation.endTimestamp)}}  {{getTime(instrumentReservation.endTimestamp)}}</h5>
+    </div>
+  </div>
+</div>
+
+
+<div> Zarezerwowane sale:</div>
+<div *ngFor="let roomReservation of roomReservationsList">
+  <div class="card">
+    <div class="card-body d-flex">
+      <h5 class="card-title mr-auto ml-4"> Indeks rezerwacji: {{roomReservation.id}} </h5>
+      <h5 class="card-title mr-auto ml-4"> Numer pokoju: {{roomReservation.roomNumber}} </h5>
+
+      <h5 class="card-title mr-auto ml-4"> Czas rozpoczęcia
+        rezerwacji: {{getDate(roomReservation.startTimestamp)}}  {{getTime(roomReservation.startTimestamp)}}</h5>
+      <h5 class="card-title mr-auto ml-4"> Czas zakończenia
+        rezerwacji: {{getDate(roomReservation.endTimestamp)}}  {{getTime(roomReservation.endTimestamp)}}</h5>
+    </div>
+  </div>
+</div>
+
+
+
+<div> Złożone raporty: przez wszystkich pracowników narazie</div>
+<div *ngFor="let report of reportsList">
+  <app-report-item [report]="report" (deleteEvent)="onDeleteReportEvent($event)" ></app-report-item>
 </div>

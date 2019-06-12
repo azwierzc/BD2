@@ -9,11 +9,13 @@
 </div>
 
 <div class="btn btn-primary mr-4 mt-4 mb-4" (click)="onBackClick()"> Wróć</div>
-
+<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList.length>0"> Rezerwacje dla sali numer {{room.number}}: </h5>
+<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList.length==0"> Brak rezerwacji dla sali numer {{room.number}}. </h5>
 <div class="card">
   <div class="card-header">Rezerwacje</div>
   <div *ngFor="let roomReservation of roomReservationsList">
-      <div class="card-body d-flex">
+    // <app-room-reservation-item [roomReservation]="roomReservation" (deleteEvent)="onDeleteEvent($event)"></app-room-reservation-item>
+    <div class="card-body d-flex">
         <div>
           <h5 class="card-text mr-auto ml-4"> Indeks rezerwacji:</h5>
           <h5 class="card-text text-center mr-auto ml-4">{{roomReservation.id}} </h5>
@@ -35,3 +37,4 @@
 </div>
 
 
+<div class="btn btn-primary mr-4 mt-5" (click)="onBackClick()"> Wróć</div>

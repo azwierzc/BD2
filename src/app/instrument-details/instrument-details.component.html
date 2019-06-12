@@ -10,4 +10,11 @@
   </div>
 </div>
 
+<h5 class="card-title mr-auto ml-4" *ngIf="instrumentReservationsList.length>0"> Rezerwacje dla sprzętu {{instrument.type}} numer seryjny {{instrument.serialNumber}} : </h5>
+<h5 class="card-title mr-auto ml-4" *ngIf="instrumentReservationsList.length==0"> Brak rezerwacji dla dla sprzętu {{instrument.type}} numer seryjny {{instrument.serialNumber}} . </h5>
+<div *ngFor="let instrumentReservation of instrumentReservationsList">
+
+  <app-instrument-reservation-item [instrumentReservation]="instrumentReservation" (deleteEvent)="onDeleteEvent($event)"></app-instrument-reservation-item>
+
+</div>
 <div class="btn btn-primary mr-4 mt-4" (click)="onBackClick()"> Wróć</div>

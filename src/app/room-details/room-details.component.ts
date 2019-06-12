@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import {RoomReservation} from '../employee-details/models/RoomReservation';
 import {RoomReservationService} from '../services/room-reservation.service';
 import {RoomModel} from '../rooms/models/RoomModel';
 import {RoomService} from '../services/room.service';
+import {EmployeeModel} from '../employees/models/EmployeeModel';
 import {InstrumentModel} from '../instruments/models/InstrumentModel';
 
 @Component({
@@ -18,26 +19,31 @@ export class RoomDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: RoomService,
     private roomReservationService: RoomReservationService,
-    private router: Router
+    private roomService: RoomService,
+    private router: Router,
   ) {
   }
 
   ngOnInit() {
     this.roomId = Number(this.route.snapshot.params.id);
-    this.service.fetchRoom(this.roomId).then((room: RoomModel) => this.room = room);
+    this.roomService.fetchRoom(this.roomId).then((room: RoomModel) => this.room = room);
     this.resolveRoomReservations();
-  }
-
-  onBackClick() {
-    this.router.navigate(['rooms']);
   }
 
   resolveRoomReservations() {
     this.roomReservationService.fetchRoomReservationsList()
       .then((list: RoomReservation[]) => this.roomReservationsList = list.filter((reservation) => reservation.roomId === this.roomId));
   }
+
+  onBackClick() {
+    this.router.navigate(['rooms']);
+  }
+
+  onDeleteEvent(id: number) {
+    this.roomReservationService.deleteRoomReservation(id).then(() => this.resolveRoomReservations());
+  }
+
 
   public getDate(date: Date): string {
     const newDate = new Date(date);

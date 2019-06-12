@@ -21,6 +21,11 @@ export class RoomReservationService {
       .toPromise();
   }
 
+
+  deleteRoomReservation(id: number): Promise<any>  {
+    return this.http.delete(serverAddress + '/room_reservation' + '/' + id).toPromise();
+  }
+
   saveRoomReservation(roomReservation: RoomReservation): Promise<any> {
     return this.http.post(serverAddress + '/room_reservation', roomReservation).toPromise();
   }

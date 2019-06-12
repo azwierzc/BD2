@@ -1,17 +1,16 @@
 <div class="card" *ngIf="room">
-  <div class="card-header">Szczegóły</div>
+  <div class="card-header"><b>Sala</b> - Szczegóły</div>
   <div class="card-body">
-    <h5 class="card-title"> Sala</h5>
-    <p class="card-text mt-3"> Id: {{room.id}}</p>
-    <p class="card-text"> Typ: {{room.type}}</p>
-    <p class="card-text mt-3"> Numer: {{room.number}}</p>
+    <p class="card-text"> <b>Id:</b> {{room.id}}</p>
+    <p class="card-text"> <b>Typ:</b> {{room.type}}</p>
+    <p class="card-text"> <b>Numer:</b> {{room.number}}</p>
   </div>
 </div>
 
-<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList && roomReservationsList.length>0"> Rezerwacje dla sali
-  numer {{room.number}} </h5>
-<h5 class="card-title mr-auto ml-4" *ngIf="roomReservationsList && roomReservationsList.length==0"> Brak rezerwacji dla
-  sali numer {{room.number}}. </h5>
+<h5 class="card-title mr-auto ml-4 my-3" *ngIf="roomReservationsList && roomReservationsList.length>0"> Rezerwacje dla sali
+  numer <b>{{room.number}}</b> </h5>
+<h5 class="card-title mr-auto ml-4 my-3" *ngIf="roomReservationsList && roomReservationsList.length==0"> Brak rezerwacji dla
+  sali numer <b>{{room.number}}</b>. </h5>
 <div class="card">
   <div class="card-header">Rezerwacje</div>
   <div *ngFor="let roomReservation of roomReservationsList">

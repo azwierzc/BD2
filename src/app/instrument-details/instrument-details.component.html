@@ -1,4 +1,9 @@
-<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="instrument">{{instrument.type}} {{instrument.id}} {{instrument.serialNumber}}</h5>
-<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="instrument">{{instrument.lastCheckTimestamp}} {{instrument.checkPeriod}}</h5>
+<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="instrument">
+  <div> Typ: {{instrument.type}}</div>
+  <div> Id: {{instrument.id}}</div>
+  <div> Numer seryjny:{{instrument.serialNumber}}</div>
+  <div> Ostatni przegląd: {{instrument.lastCheckTimestamp}}</div>
+  <div>{{instrument.checkPeriod}} </div>
+</h5>
 
 <div class="btn btn-primary mr-4 mt-4" (click)="onBackClick()"> Wróć</div>

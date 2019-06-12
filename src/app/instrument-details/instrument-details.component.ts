@@ -16,7 +16,7 @@ export class InstrumentDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.instrumentId = Number(this.route.snapshot.params.id);
-    this.service.fetchInstrument(this.instrumentId).then((instrument: InstrumentModel) => this.instrument = instrument);
+    // this.service.fetchInstrument(this.instrumentId);.then((instrument: InstrumentModel) => this.instrument = instrument);
   }
 
   onBackClick() {

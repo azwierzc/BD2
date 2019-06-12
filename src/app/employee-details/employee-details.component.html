@@ -1,6 +1,9 @@
-<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="employee">{{employee.name}} {{employee.surname}}</h5>
-
-<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="employee">{{employee.prefix}} {{employee.wardName}}</h5>
+<h5 class="card-title mr-auto ml-4 mt-4" *ngIf="employee">
+  <div class="mb-3"> Imię: {{employee.name}}</div>
+  <div class="mb-3"> Nazwisko: {{employee.surname}}</div>
+  <div class="mb-3" *ngIf="employee.prefix">Tytuł: {{employee.prefix}}</div>
+  <div> Oddział: {{employee.wardName}}</div>
+</h5>
 
 <div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onInstrumentOptionClick()"> Wypożycz sprzęt</div>
 <div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onRoomOptionClick()"> Zarezerwuj salę</div>

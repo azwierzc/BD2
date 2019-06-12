@@ -1,17 +1,17 @@
 <div class="card" *ngIf="instrument">
   <div class="card-header">Szczegóły</div>
   <div class="card-body">
-    <h5 class="card-title"> Urządzenie</h5>
-    <p class="card-text mt-3"> Id: {{instrument.id}}</p>
-    <p class="card-text mt-3"> Typ: {{instrument.type}}</p>
-    <p class="card-text"> Numer seryjny: {{instrument.serialNumber}}</p>
-    <p *ngIf="instrument.lastCheckTimestamp" class="card-text mt-3"> Ostatni przegląd: {{instrument.lastCheckTimestamp}}</p>
-    <p *ngIf="instrument.checkPeriod" class="mt-3"> Okres ważności przeglądu: {{instrument.checkPeriod}}</p>
+    <h5 class="card-title"> <b>Urządzenie</b></h5>
+    <p class="card-text mt-3"> <b>Id:</b> {{instrument.id}}</p>
+    <p class="card-text mt-3"> <b> Typ:</b> {{instrument.type}}</p>
+    <p class="card-text"> <b>Numer seryjny:</b> {{instrument.serialNumber}}</p>
+    <p *ngIf="instrument.lastCheckTimestamp" class="card-text mt-3"> <b> Ostatni przegląd: </b>{{instrument.lastCheckTimestamp}}</p>
+    <p *ngIf="instrument.checkPeriod" class="mt-3"> <b>Okres ważności przeglądu:</b> {{instrument.checkPeriod}}</p>
   </div>
 </div>
 
-<h5 class="card-title mr-auto ml-4" *ngIf="instrumentReservationsList && instrumentReservationsList.length>0"> Rezerwacje dla sprzętu {{instrument.type}} numer seryjny {{instrument.serialNumber}} : </h5>
-<h5 class="card-title mr-auto ml-4" *ngIf="instrumentReservationsList && instrumentReservationsList.length==0"> Brak rezerwacji dla dla sprzętu {{instrument.type}} numer seryjny {{instrument.serialNumber}} . </h5>
+<h5 class="card-title mr-auto ml-4 my-4" *ngIf="instrumentReservationsList && instrumentReservationsList.length>0"> Rezerwacje dla sprzętu <b>{{instrument.type}}</b> numer seryjny <b>{{instrument.serialNumber}}</b> : </h5>
+<h5 class="card-title mr-auto ml-4 my-4" *ngIf="instrumentReservationsList && instrumentReservationsList.length==0"> Brak rezerwacji dla dla sprzętu <b>{{instrument.type}}</b> numer seryjny <b>{{instrument.serialNumber}}</b> . </h5>
 <div *ngFor="let instrumentReservation of instrumentReservationsList">
 
   <app-instrument-reservation-item [instrumentReservation]="instrumentReservation" [showEmployee]="true" (deleteEvent)="onDeleteEvent($event)"></app-instrument-reservation-item>

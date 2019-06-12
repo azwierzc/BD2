@@ -17,6 +17,11 @@ export class ReportService {
       .toPromise();
   }
 
+  fetchReportsListToEmployee(): Promise<any> {
+    return this.http.get(serverAddress + '/report' + '/employee')
+      .toPromise();
+  }
+
   fetchReport(id: number): Promise<any> {
     return this.http.get(serverAddress + '/report' + id)
       .toPromise();

@@ -33,10 +33,6 @@ export class EmployeeDetailsComponent implements OnInit {
   report: ReportModel;
   reportsList: ReportModel[];
   reportsListToEmployee: ReportModel[];
-  roomReport: RoomReportModel;
-  instrumentReport: InstrumentReportModel;
-  roomReportsList: RoomReportModel[];
-  instrumentReportsList: InstrumentReportModel[];
   roomReservationsList: RoomReservation[];
   instrumentReservationsList: InstrumentReservation[];
   isInstrumentViewOpen = false;
@@ -66,14 +62,8 @@ export class EmployeeDetailsComponent implements OnInit {
     this.resolveRooms();
     this.resolveRoomReservations();
     this.resolveInstrumentReservations();
-    // this.resolveReports();
     this.resolveReportsToEmployee();
     this.report = new ReportModel();
-    // this.resolveRoomReports();
-    //  this.resolveInstrumentReports();
-
-    this.report = new ReportModel();
-    //  this.instrumentReport = new InstrumentReportModel();
   }
 
   resolveInstruments() {
@@ -85,33 +75,14 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   resolveReports() {
-    this.reportService.fetchReportsList().then((list: ReportModel[]) => this.reportsList = list.filter((report) => report.employeeId === this.employeeId));
+    this.reportService.fetchReportsList()
+      .then((list: ReportModel[]) => this.reportsList = list.filter((report) => report.employeeId === this.employeeId));
   }
 
 
   resolveReportsToEmployee() {
     this.reportService.fetchReportsListToEmployee(this.employeeId)
-      .then((list: ReportModel[]) => this.reportsListToEmployee = list)
-      .then(() => console.log(this.reportsListToEmployee));
-  }
-
-
-  onInstrumentOptionClick() {
-    if (this.isInstrumentViewOpen === false) {
-      this.isInstrumentViewOpen = true;
-      this.isRoomViewOpen = false;
-    } else {
-      this.isInstrumentViewOpen = false;
-    }
-  }
-
-  onRoomOptionClick() {
-    if (this.isRoomViewOpen === false) {
-      this.isRoomViewOpen = true;
-      this.isInstrumentViewOpen = false;
-    } else {
-      this.isRoomViewOpen = false;
-    }
+      .then((list: ReportModel[]) => this.reportsListToEmployee = list);
   }
 
   onBackClick() {
@@ -120,12 +91,16 @@ export class EmployeeDetailsComponent implements OnInit {
 
   resolveRoomReservations() {
     this.roomReservationService.fetchRoomReservationsList()
-      .then((list: RoomReservation[]) => this.roomReservationsList = list.filter((reservation) => reservation.employeeId === this.employeeId));
+      .then((list: RoomReservation[]) => this.roomReservationsList = list
+        .filter((reservation) => reservation.employeeId === this.employeeId)
+      );
   }
 
   resolveInstrumentReservations() {
     this.instrumentReservationService.fetchInstrumentReservationsList()
-      .then((list: InstrumentReservation[]) => this.instrumentReservationsList = list.filter((reservation) => reservation.employeeId === this.employeeId));
+      .then((list: InstrumentReservation[]) => this.instrumentReservationsList = list
+        .filter((reservation) => reservation.employeeId === this.employeeId)
+      );
   }
 
   onRentInstrumentClick(id: number) {
@@ -136,8 +111,8 @@ export class EmployeeDetailsComponent implements OnInit {
 
   onRentRoomClick(id: number) {
     const modelReference = this.modalService.open(RoomReservationComponent, {ariaLabelledBy: 'modal-basic-title'});
-   modelReference.componentInstance.employeeId = this.employeeId;
-   modelReference.componentInstance.roomId = id;
+    modelReference.componentInstance.employeeId = this.employeeId;
+    modelReference.componentInstance.roomId = id;
   }
 
 
@@ -145,7 +120,6 @@ export class EmployeeDetailsComponent implements OnInit {
     const modelReference = this.modalService.open(ReportComponent, {ariaLabelledBy: 'modal-basic-title'});
     modelReference.componentInstance.employeeId = this.employeeId;
   }
-
 
   onDeleteReportEvent(id: number) {
     this.reportService.deleteReport(id).then(() => this.resolveReports());

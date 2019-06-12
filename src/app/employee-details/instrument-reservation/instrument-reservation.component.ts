@@ -17,6 +17,7 @@ export class InstrumentReservationComponent implements OnInit {
   @Input() employeeSurname: string;
   @Input() instrumentId: number;
 
+
   constructor(
     private activeModal: NgbActiveModal,
     private route: ActivatedRoute,

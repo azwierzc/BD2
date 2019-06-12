@@ -10,6 +10,7 @@ import {RoomReservationItemComponent} from './room-reservation/room-reservation-
 import {InstrumentReservationItemComponent} from './instrument-reservation/instrument-reservation-item/instrument-reservation-item.component';
 import {ReportComponent} from './report/report.component';
 import {ReportItemComponent} from './report/report-item/report-item.component';
+import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ReportItemComponent} from './report/report-item/report-item.component';
     IntrumentsModule,
     CommonModule,
     DlDateTimePickerModule,
-    FormsModule
+    FormsModule,
+    NgbTabsetModule
   ],
   exports: [
     RoomReservationItemComponent,

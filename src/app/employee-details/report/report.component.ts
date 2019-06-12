@@ -30,6 +30,7 @@ export class ReportComponent implements OnInit {
     this.report.employeeId = this.employeeId;
     this.report.employeeName = this.employeeName;
     this.report.type = this.type;
+
   }
 
   onSave() {

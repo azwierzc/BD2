@@ -34,7 +34,19 @@ export class ReportComponent implements OnInit {
 
   }
 
+
   onSave() {
+    if (this.report.type = 'Awaria sprzętu'){
+      this.report.type = 'INSTRUMENT_MALFUNCTION';
+    } else if (this.report.type = 'Awaria sali') {
+      this.report.type = 'ROOM_MALFUNCTION';
+    } else if (this.report.type = 'Brak asortymentu') {
+      this.report.type = 'SUPPLY_SHORTAGE';
+    } else {
+      this.report.type = 'WITHDRAWAL';
+    }
+
+
     this.service.saveReport(this.report);
     this.activeModal.close();
   }

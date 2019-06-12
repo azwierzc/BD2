@@ -31,20 +31,20 @@ export class ReportComponent implements OnInit {
     this.report = new ReportModel();
     this.report.employeeId = this.employeeId;
     this.report.employeeName = this.employeeName;
-    this.report.type = this.type;
+    this.report.reportType = this.type;
 
   }
 
 
   onSave() {
-    if (this.report.type = 'Awaria sprzętu'){
-      this.report.type = 'INSTRUMENT_MALFUNCTION';
-    } else if (this.report.type = 'Awaria sali') {
-      this.report.type = 'ROOM_MALFUNCTION';
-    } else if (this.report.type = 'Brak asortymentu') {
-      this.report.type = 'SUPPLY_SHORTAGE';
+    if (this.report.reportType = 'Awaria sprzętu'){
+      this.report.reportType = 'INSTRUMENT_MALFUNCTION';
+    } else if (this.report.reportType = 'Awaria sali') {
+      this.report.reportType = 'ROOM_MALFUNCTION';
+    } else if (this.report.reportType = 'Brak asortymentu') {
+      this.report.reportType = 'SUPPLY_SHORTAGE';
     } else {
-      this.report.type = 'WITHDRAWAL';
+      this.report.reportType = 'WITHDRAWAL';
     }
 
 

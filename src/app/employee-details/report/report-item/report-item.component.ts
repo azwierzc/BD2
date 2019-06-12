@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ReportModel} from '../../models/ReportModel';
 
-
-
 @Component({
   selector: 'app-report-item',
   templateUrl: './report-item.component.html',

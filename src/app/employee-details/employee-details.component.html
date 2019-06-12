@@ -1,4 +1,8 @@
-<div class="card" *ngIf="employee">
+<div class="btn btn-primary mr-4 mt-0 float-right" (click)="onBackClick()"> Wróć</div>
+
+
+
+<div class="card mt-5" *ngIf="employee">
   <div class="card-header">Szczegóły</div>
   <div class="card-body">
     <h5 class="card-title"> Pracownik</h5>
@@ -9,38 +13,49 @@
   </div>
 </div>
 
-<div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onInstrumentOptionClick()"> Sprzęt</div>
-<div class="btn btn-primary mr-4 ml-auto mt-4" (click)="onRoomOptionClick()"> Sale</div>
-<div class="btn btn-primary mr-4 mt-4 float-right" (click)="onBackClick()"> Wróć</div>
+
+<div class="btn btn-primary mr-4 mt-3" (click)="onAddInstrumentReportClick()"> Złóż raport</div>
 
 
-<div *ngIf="isInstrumentViewOpen">
-  <div class=" mr-4 mt-10"></div>
-  <div class="btn btn-primary mr-4 mt-10" (click)="onAddInstrumentReportClick()"> Złóż raport dla sprzętu</div>
+<h5 class="card-title mr-auto mt-4">Wybierz sprzęt do wypożyczenia lub salę do zarezerwowania</h5>
 
-  <div *ngFor="let instrument of instrumentsList">
-    <div class="card">
-      <div class="card-body d-flex">
-        <h5 class="card-title mr-auto ml-4">Urządzenie {{instrument.type}}    Numer seryjny: {{instrument.serialNumber}}</h5>
-        <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick(instrument.id)"> Wypożycz</div>
+<div  class="mt-3"></div>
+<ngb-tabset >
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Sprzęt </b> </ng-template>
+    <ng-template ngbTabContent>
+      <div *ngFor="let instrument of instrumentsList">
+        <div class="card">
+          <div class="card-body d-flex">
+            <h5 class="card-title mr-auto ml-4">Urządzenie {{instrument.type}}    Numer seryjny: {{instrument.serialNumber}}</h5>
+            <div class="btn btn-primary mr-4" (click)="onRentInstrumentClick(instrument.id)"> Wypożycz</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+    </ng-template>
+  </ngb-tab>
 
-<div class="card-title mt-10 " *ngIf="isRoomViewOpen">
-  <div class="btn btn-primary mr-4 mt-10" (click)="onAddRoomReportClick()"> Złóż raport dla sali</div>
-  <div *ngFor="let room of roomsList">
-    <div class="card">
-      <div class="card-body d-flex">
-        <h5 class="card-title mr-auto ml-4">Sala: {{room.type}}    Numer: {{room.number}}</h5>
-        <div class="btn btn-primary mr-4" (click)="onRentRoomClick(room.id)"> Zarezerwuj</div>
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Sale </b> </ng-template>
+    <ng-template ngbTabContent>
 
+      <div *ngFor="let room of roomsList">
+        <div class="card">
+          <div class="card-body d-flex">
+            <h5 class="card-title mr-auto ml-4">Sala: {{room.type}}    Numer: {{room.number}}</h5>
+            <div class="btn btn-primary mr-4" (click)="onRentRoomClick(room.id)"> Zarezerwuj</div>
+
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
+    </ng-template>
+  </ngb-tab>
+
+</ngb-tabset>
+
+
+<h5 class="card-title mr-auto mt-4">Wypożyczenia i rezerwacje pracownika</h5>
 
 <ngb-tabset>
   <ngb-tab>
@@ -48,17 +63,10 @@
     <ng-template ngbTabContent>
 
       <div *ngFor="let instrumentReservation of instrumentReservationsList">
-        <div class="card">
-          <div class="card-body d-flex">
-            <h5 class="card-title mr-auto ml-4"> Indeks rezerwacji: {{instrumentReservation.id}} </h5>
-            <h5 class="card-title mr-auto ml-4"> Id sprzętu: {{instrumentReservation.instrumentId}} </h5>
-
-            <h5 class="card-title mr-auto ml-4"> Czas rozpoczęcia
-              rezerwacji: {{getDate(instrumentReservation.startTimestamp)}}  {{getTime(instrumentReservation.startTimestamp)}}</h5>
-            <h5 class="card-title mr-auto ml-4"> Czas zakończenia
-              rezerwacji: {{getDate(instrumentReservation.endTimestamp)}}  {{getTime(instrumentReservation.endTimestamp)}}</h5>
-          </div>
+        <div *ngFor="let instrumentReservation of instrumentReservationsList">
+          <app-instrument-reservation-item [instrumentReservation]="instrumentReservation" (deleteEvent)="onDeleteInstrumentReservationEvent($event)"></app-instrument-reservation-item>
         </div>
+
       </div>
     </ng-template>
   </ngb-tab>
@@ -67,19 +75,6 @@
     <ng-template ngbTabTitle><b>Zarezerwowane sale </b> </ng-template>
     <ng-template ngbTabContent>
 
-      <div *ngFor="let roomReservation of roomReservationsList">
-        <div class="card">
-          <div class="card-body d-flex">
-            <h5 class="card-title mr-auto ml-4"> Indeks rezerwacji: {{roomReservation.id}} </h5>
-            <h5 class="card-title mr-auto ml-4"> Numer pokoju: {{roomReservation.roomNumber}} </h5>
-
-            <h5 class="card-title mr-auto ml-4"> Czas rozpoczęcia
-              rezerwacji: {{getDate(roomReservation.startTimestamp)}}  {{getTime(roomReservation.startTimestamp)}}</h5>
-            <h5 class="card-title mr-auto ml-4"> Czas zakończenia
-              rezerwacji: {{getDate(roomReservation.endTimestamp)}}  {{getTime(roomReservation.endTimestamp)}}</h5>
-          </div>
-        </div>
-      </div>
 
     </ng-template>
   </ngb-tab>
@@ -94,6 +89,5 @@
 
     </ng-template>
   </ngb-tab>
-
 </ngb-tabset>
 

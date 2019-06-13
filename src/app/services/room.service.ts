@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {serverAddress} from '../../assets/server.constant';
 import {HttpClient} from '@angular/common/http';
 import {RoomToAddModel} from '../rooms/models/RoomToAddModel';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
-
   constructor(private http: HttpClient) {
   }
 

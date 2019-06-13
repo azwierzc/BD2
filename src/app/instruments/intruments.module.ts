@@ -4,6 +4,7 @@ import {InstrumentsComponent} from './instruments.component';
 import { InstrumentItemComponent } from './instrument-item/instrument-item.component';
 import {FormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
   imports: [
     CommonModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgbAlertModule
   ]
 })
 export class IntrumentsModule { }

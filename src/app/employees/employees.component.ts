@@ -6,6 +6,8 @@ import {EmployeeToAddModel} from './models/EmployeeToAddModel';
 import {WardModel} from './models/WardModel';
 import {WardService} from '../services/ward.service';
 import {Router} from '@angular/router';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-employees',
@@ -14,7 +16,13 @@ import {Router} from '@angular/router';
 })
 export class EmployeesComponent implements OnInit {
   employeeTypeOptions: string[] = ['Doktor', 'Pięlęgniarka'];
-
+  private alert = new Subject<string>();
+  private alertS = new Subject<string>();
+  private alertP = new Subject<string>();
+  staticAlertClosed = false;
+  alertMessage: string;
+  alertMessageP: string;
+  alertMessageS: string;
   employeesList: EmployeeModel[];
   employeeToAdd: EmployeeToAddModel;
 
@@ -31,6 +39,12 @@ export class EmployeesComponent implements OnInit {
     this.employeeToAdd = new EmployeeToAddModel();
     this.resolveEmployees();
     this.resolveWards();
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+    this.alert.subscribe((message) => this.alertMessage = message);
+    this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
+    this.alertS.pipe(debounceTime(3000)).subscribe(() => this.alertMessageS = null);
+    this.alertP.subscribe((messageP) => this.alertMessageP = messageP);
+    this.alertP.pipe(debounceTime(3000)).subscribe(() => this.alertMessageP = null);
   }
 
   resolveEmployees() {
@@ -42,7 +56,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   onDeleteEvent(id: number) {
-    this.service.deleteEmployee(id).then(() => this.resolveEmployees());
+    this.service.deleteEmployee(id).then(() => this.resolveEmployees()).catch((error) => this.viewMessage());
   }
 
   onDetailsEvent(id: number) {
@@ -54,15 +68,25 @@ export class EmployeesComponent implements OnInit {
   }
 
   saveReport(modal) {
-
     if (this.employeeToAdd.type === 'Doktor') {
       this.employeeToAdd.type = 'DOCTOR';
-    } else{
+    } else {
       this.employeeToAdd.type = 'NURSE';
     }
-
-    this.service.saveEmployee(this.employeeToAdd).then(() => this.resolveEmployees());
-    modal.close();
+    if ( !this.employeeToAdd.name || !this.employeeToAdd.surname) { this.viewMessageP(modal); }
+    this.service.saveEmployee(this.employeeToAdd).then(() => this.resolveEmployees()).then(() => modal.close())
+      .catch((error) => this.viewMessageS());
   }
 
+  viewMessage() {
+    this.alert.next('Brak uprawnień do usunięcia pracownika.');
+  }
+
+  viewMessageS() {
+    this.alertS.next('Brak uprawnień do dodania pracownika');
+  }
+  viewMessageP(modal) {
+    this.alertP.next('Podaj imię i nazwisko pracownika');
+    this.onAddEmployeeClick(modal);
+  }
 }

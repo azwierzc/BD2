@@ -14,7 +14,7 @@ import {Subject} from 'rxjs';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  employeeTypeOptions: string[] = ['DOCTOR', 'NURSE'];
+  employeeTypeOptions: string[] = ['Doktor', 'Pięlęgniarka'];
   private alert = new Subject<string>();
   private alertS = new Subject<string>();
   staticAlertClosed = false;
@@ -62,6 +62,11 @@ export class EmployeesComponent implements OnInit {
   }
 
   saveReport(modal) {
+    if (this.employeeToAdd.type === 'Doktor') {
+      this.employeeToAdd.type = 'DOCTOR';
+    } else {
+      this.employeeToAdd.type = 'NURSE';
+    }
     this.service.saveEmployee(this.employeeToAdd).then(() => this.resolveEmployees()).then(() => modal.close())
       .catch((error) => this.viewMessageS());
   }

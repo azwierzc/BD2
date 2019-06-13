@@ -1,5 +1,7 @@
 header {
-  background: #429aff;}
+  background: #429aff;
+  background: linear-gradient(to right bottom, #11afde, #2847c5);
+}
 
 .logo {
   font-weight: bold;

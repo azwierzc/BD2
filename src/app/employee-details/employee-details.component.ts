@@ -74,12 +74,6 @@ export class EmployeeDetailsComponent implements OnInit {
     this.roomService.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list);
   }
 
-  resolveReports() {
-    this.reportService.fetchReportsList()
-      .then((list: ReportModel[]) => this.reportsList = list.filter((report) => report.employeeId === this.employeeId));
-  }
-
-
   resolveReportsToEmployee() {
     this.reportService.fetchReportsListToEmployee(this.employeeId)
       .then((list: ReportModel[]) => this.reportsListToEmployee = list);
@@ -121,8 +115,19 @@ export class EmployeeDetailsComponent implements OnInit {
     modelReference.componentInstance.employeeId = this.employeeId;
   }
 
+  onDeleteInstrumentReservationEvent(id: number) {
+    this.instrumentReservationService.deleteInstrumentReservation(id)
+      .then(() => this.resolveInstrumentReservations());
+  }
+
+  onDeleteRoomReservationEvent(id: number) {
+    this.roomReservationService.deleteRoomReservation(id)
+      .then(() => this.resolveRoomReservations());
+  }
+
   onDeleteReportEvent(id: number) {
-    this.reportService.deleteReport(id).then(() => this.resolveReports());
+    this.reportService.deleteReport(id)
+      .then(() => this.resolveReportsToEmployee());
   }
 
   public getDate(date: Date): string {

@@ -7,6 +7,7 @@ import {WardModel} from './models/WardModel';
 import {WardService} from '../services/ward.service';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-employees',
@@ -17,8 +18,10 @@ export class EmployeesComponent implements OnInit {
   employeeTypeOptions: string[] = ['Doktor', 'Pięlęgniarka'];
   private alert = new Subject<string>();
   private alertS = new Subject<string>();
+  private alertP = new Subject<string>();
   staticAlertClosed = false;
   alertMessage: string;
+  alertMessageP: string;
   alertMessageS: string;
   employeesList: EmployeeModel[];
   employeeToAdd: EmployeeToAddModel;
@@ -39,6 +42,9 @@ export class EmployeesComponent implements OnInit {
     setTimeout(() => this.staticAlertClosed = true, 20000);
     this.alert.subscribe((message) => this.alertMessage = message);
     this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
+    this.alertS.pipe(debounceTime(3000)).subscribe(() => this.alertMessageS = null);
+    this.alertP.subscribe((messageP) => this.alertMessageP = messageP);
+    this.alertP.pipe(debounceTime(3000)).subscribe(() => this.alertMessageP = null);
   }
 
   resolveEmployees() {
@@ -67,6 +73,7 @@ export class EmployeesComponent implements OnInit {
     } else {
       this.employeeToAdd.type = 'NURSE';
     }
+    if ( !this.employeeToAdd.name || !this.employeeToAdd.surname) { this.viewMessageP(modal); }
     this.service.saveEmployee(this.employeeToAdd).then(() => this.resolveEmployees()).then(() => modal.close())
       .catch((error) => this.viewMessageS());
   }
@@ -77,5 +84,9 @@ export class EmployeesComponent implements OnInit {
 
   viewMessageS() {
     this.alertS.next('Brak uprawnień do dodania pracownika');
+  }
+  viewMessageP(modal) {
+    this.alertP.next('Podaj imię i nazwisko pracownika');
+    this.onAddEmployeeClick(modal);
   }
 }

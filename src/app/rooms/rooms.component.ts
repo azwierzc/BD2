@@ -35,6 +35,8 @@ export class RoomsComponent implements OnInit {
     setTimeout(() => this.staticAlertClosed = true, 20000);
     this.alert.subscribe((message) => this.alertMessage = message);
     this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
+    this.alert.pipe(debounceTime(5000)).subscribe(() => this.alertMessage = null);
+    this.alertS.pipe(debounceTime(5000)).subscribe(() => this.alertMessageS = null);
   }
 
   resolveRooms() {

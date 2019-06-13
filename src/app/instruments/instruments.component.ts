@@ -17,9 +17,11 @@ export class InstrumentsComponent implements OnInit {
 
   private alert = new Subject<string>();
   private alertS = new Subject<string>();
+  private alertP = new Subject<string>();
   staticAlertClosed = false;
   alertMessage: string;
   alertMessageS: string;
+  alertMessageP: string;
   instrumentsList: InstrumentModel[];
   instrumentToAdd: InstrumentToAddModel;
 
@@ -37,6 +39,10 @@ export class InstrumentsComponent implements OnInit {
     setTimeout(() => this.staticAlertClosed = true, 20000);
     this.alert.subscribe((message) => this.alertMessage = message);
     this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
+    this.alertP.subscribe((messageS) => this.alertMessageP = messageS);
+    this.alert.pipe(debounceTime(5000)).subscribe(() => this.alertMessage = null);
+    this.alertS.pipe(debounceTime(5000)).subscribe(() => this.alertMessageS = null);
+    this.alertP.pipe(debounceTime(5000)).subscribe(() => this.alertMessageP = null);
   }
 
   resolveInstruments() {
@@ -57,6 +63,7 @@ export class InstrumentsComponent implements OnInit {
   }
 
   saveReport(modal) {
+    if (!this.instrumentToAdd.serialNumber || !this.instrumentToAdd.type) {this.viewMessageP(modal); }
     this.service.saveInstrument(this.instrumentToAdd).then(() => this.resolveInstruments()).then(() => modal.close())
       .catch((error) => this.viewMessageS());
   }
@@ -67,5 +74,10 @@ export class InstrumentsComponent implements OnInit {
 
   viewMessageS() {
     this.alertS.next('Brak uprawnień do dodania urządzenia');
+  }
+
+  viewMessageP(modal) {
+    this.alertS.next('Uzupełnij numer seryjny i typ urządzenia');
+    this.onAddInstrumentClick(modal);
   }
 }

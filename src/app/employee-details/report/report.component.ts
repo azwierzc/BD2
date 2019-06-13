@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {ReportModel} from '../models/ReportModel';
 import {ReportService} from '../../services/report.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-report',
@@ -14,7 +15,9 @@ import {ReportService} from '../../services/report.service';
 export class ReportComponent implements OnInit {
   reportTypeOptions: string[] = ['Awaria sprzętu', 'Awaria sali', 'Brak asortymentu', 'Pobranie'];
   report: ReportModel;
-
+  private alert = new Subject<string>();
+  staticAlertClosed = false;
+  alertMessage: string;
   @Input() employeeId: number;
   @Input() employeeName: string;
   @Input() type: string;
@@ -32,7 +35,8 @@ export class ReportComponent implements OnInit {
     this.report.employeeId = this.employeeId;
     this.report.employeeName = this.employeeName;
     this.report.reportType = this.type;
-
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+    this.alert.subscribe((message) => this.alertMessage = message);
   }
 
 
@@ -46,10 +50,12 @@ export class ReportComponent implements OnInit {
     } else if (this.report.reportType === 'Pobranie') {
       this.report.reportType = 'WITHDRAWAL';
     }
+    if (!this.report.content) {};
 
-    this.service.saveReport(this.report);
-    this.router.navigate(['/employees']);
-    this.activeModal.close();
+    this.service.saveReport(this.report).then(() => this.router.navigate(['/employees']))
+      .then(() => this.activeModal.close()).catch((error) => this.viewMessage());
+    // this.router.navigate(['/employees']);
+    // this.activeModal.close();
   }
 
   getDate(date: Date): string {
@@ -58,5 +64,9 @@ export class ReportComponent implements OnInit {
 
   getTime(date: Date): string {
     return date.toLocaleTimeString();
+  }
+
+  viewMessage() {
+    this.alert.next('Dodaj treść do raportu.');
   }
 }

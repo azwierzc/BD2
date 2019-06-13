@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {WardModel} from '../employees/models/WardModel';
 import {WardService} from '../services/ward.service';
 import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-wards',
@@ -34,7 +35,9 @@ export class WardsComponent implements OnInit {
     this.resolveWards();
     setTimeout(() => this.staticAlertClosed = true, 20000);
     this.alert.subscribe((message) => this.alertMessage = message);
+    this.alert.pipe(debounceTime(5000)).subscribe(() => this.alertMessage = null);
     this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
+    this.alertS.pipe(debounceTime(5000)).subscribe(() => this.alertMessageS = null);
   }
 
   resolveWards() {

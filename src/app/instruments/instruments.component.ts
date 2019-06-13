@@ -1,4 +1,3 @@
-
 import {Component, OnInit} from '@angular/core';
 import {InstrumentModel} from './models/InstrumentModel';
 import {InstrumentService} from '../services/instrument.service';
@@ -6,6 +5,8 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {InstrumentToAddModel} from './models/InstrumentToAddModel';
 import {InstrumentTypeService} from '../services/instrumentType.service';
 import {Router} from '@angular/router';
+import {debounceTime} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-instruments',
@@ -14,6 +15,11 @@ import {Router} from '@angular/router';
 })
 export class InstrumentsComponent implements OnInit {
 
+  private alert = new Subject<string>();
+  private alertS = new Subject<string>();
+  staticAlertClosed = false;
+  alertMessage: string;
+  alertMessageS: string;
   instrumentsList: InstrumentModel[];
   instrumentToAdd: InstrumentToAddModel;
 
@@ -28,6 +34,9 @@ export class InstrumentsComponent implements OnInit {
   ngOnInit() {
     this.instrumentToAdd = new InstrumentToAddModel();
     this.resolveInstruments();
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+    this.alert.subscribe((message) => this.alertMessage = message);
+    this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
   }
 
   resolveInstruments() {
@@ -35,7 +44,8 @@ export class InstrumentsComponent implements OnInit {
   }
 
   onDeleteEvent(id: number) {
-    this.service.deleteInstrument(id).then(() => this.resolveInstruments());
+    this.service.deleteInstrument(id).then(() => this.resolveInstruments()).catch((error) => this.viewMessage());
+    this.alert.pipe(debounceTime(5000)).subscribe(() => this.alertMessage = null);
   }
 
   onDetailsEvent(id: number) {
@@ -47,8 +57,15 @@ export class InstrumentsComponent implements OnInit {
   }
 
   saveReport(modal) {
-    this.service.saveInstrument(this.instrumentToAdd).then(() => this.resolveInstruments());
-    modal.close();
+    this.service.saveInstrument(this.instrumentToAdd).then(() => this.resolveInstruments()).then(() => modal.close())
+      .catch((error) => this.viewMessageS());
   }
 
+  viewMessage() {
+    this.alert.next('Brak uprawnień do usunięcia urządzenia.');
+  }
+
+  viewMessageS() {
+    this.alertS.next('Brak uprawnień do dodania urządzenia');
+  }
 }

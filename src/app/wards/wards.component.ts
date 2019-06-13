@@ -6,6 +6,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {WardModel} from '../employees/models/WardModel';
 import {WardService} from '../services/ward.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-wards',
@@ -13,7 +14,11 @@ import {WardService} from '../services/ward.service';
   styleUrls: ['./wards.component.css']
 })
 export class WardsComponent implements OnInit {
-
+  private alert = new Subject<string>();
+  private alertS = new Subject<string>();
+  staticAlertClosed = false;
+  alertMessage: string;
+  alertMessageS: string;
   wardsList: WardModel[];
   wardToAdd: WardModel;
 
@@ -27,6 +32,9 @@ export class WardsComponent implements OnInit {
   ngOnInit() {
     this.wardToAdd = new WardModel();
     this.resolveWards();
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+    this.alert.subscribe((message) => this.alertMessage = message);
+    this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
   }
 
   resolveWards() {
@@ -34,7 +42,7 @@ export class WardsComponent implements OnInit {
   }
 
   onDeleteEvent(id: number) {
-    this.service.deleteWard(id).then(() => this.resolveWards());
+    this.service.deleteWard(id).then(() => this.resolveWards()).catch((error) => this.viewMessage());
   }
 
   onDetailsEvent(id: number) {
@@ -46,7 +54,15 @@ export class WardsComponent implements OnInit {
   }
 
   saveReport(modal) {
-    this.service.saveWard(this.wardToAdd).then(() => this.resolveWards());
-    modal.close();
+    this.service.saveWard(this.wardToAdd).then(() => this.resolveWards()).then(() => modal.close())
+      .catch((error) => this.viewMessageS());
+  }
+
+  viewMessage() {
+    this.alert.next('Brak uprawnień do usunięcia oddziału.');
+  }
+
+  viewMessageS() {
+    this.alertS.next('Brak uprawnień do dodania oddziału');
   }
 }

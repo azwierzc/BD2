@@ -4,6 +4,7 @@ import {WardsComponent} from './wards.component';
 import {WardItemComponent} from './ward-item/ward-item.component';
 import {FormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
   imports: [
     CommonModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgbAlertModule
   ]
 })
 export class WardsModule {

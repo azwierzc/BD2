@@ -73,7 +73,7 @@ export class EmployeesComponent implements OnInit {
     } else {
       this.employeeToAdd.type = 'NURSE';
     }
-    if ( !this.employeeToAdd.wardId || !this.employeeToAdd.prefix || !this.employeeToAdd.type || !this.employeeToAdd.surname || !this.employeeToAdd.name) { this.viewMessageP(modal); }
+    if ( !this.employeeToAdd.wardId || !this.employeeToAdd.type || !this.employeeToAdd.surname || !this.employeeToAdd.name) { this.viewMessageP(modal); }
     this.service.saveEmployee(this.employeeToAdd).then(() => this.resolveEmployees()).then(() => modal.close())
       .catch((error) => this.viewMessageS());
   }

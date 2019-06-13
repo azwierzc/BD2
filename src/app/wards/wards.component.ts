@@ -17,9 +17,11 @@ import {debounceTime} from 'rxjs/operators';
 export class WardsComponent implements OnInit {
   private alert = new Subject<string>();
   private alertS = new Subject<string>();
+  private  alertP = new Subject<string>();
   staticAlertClosed = false;
   alertMessage: string;
   alertMessageS: string;
+  alertMessageP: string;
   wardsList: WardModel[];
   wardToAdd: WardModel;
 
@@ -38,6 +40,8 @@ export class WardsComponent implements OnInit {
     this.alert.pipe(debounceTime(5000)).subscribe(() => this.alertMessage = null);
     this.alertS.subscribe((messageS) => this.alertMessageS = messageS);
     this.alertS.pipe(debounceTime(5000)).subscribe(() => this.alertMessageS = null);
+    this.alertP.subscribe((messageP) => this.alertMessageP = messageP);
+    this.alertP.pipe(debounceTime(3000)).subscribe(() => this.alertMessageP = null);
   }
 
   resolveWards() {
@@ -57,6 +61,7 @@ export class WardsComponent implements OnInit {
   }
 
   saveReport(modal) {
+    if (!this.wardToAdd.name) {this.viewMessageP(modal); }
     this.service.saveWard(this.wardToAdd).then(() => this.resolveWards()).then(() => modal.close())
       .catch((error) => this.viewMessageS());
   }
@@ -67,5 +72,10 @@ export class WardsComponent implements OnInit {
 
   viewMessageS() {
     this.alertS.next('Brak uprawnień do dodania oddziału');
+  }
+
+  viewMessageP(modal) {
+    this.alertP.next('Uzupełnij typ oddziału.');
+    this.onAddWardClick(modal)
   }
 }

@@ -73,7 +73,7 @@ export class EmployeesComponent implements OnInit {
     } else {
       this.employeeToAdd.type = 'NURSE';
     }
-    if ( !this.employeeToAdd.name || !this.employeeToAdd.surname) { this.viewMessageP(modal); }
+    if ( !this.employeeToAdd.wardId || !this.employeeToAdd.prefix || !this.employeeToAdd.type || !this.employeeToAdd.surname || !this.employeeToAdd.name) { this.viewMessageP(modal); }
     this.service.saveEmployee(this.employeeToAdd).then(() => this.resolveEmployees()).then(() => modal.close())
       .catch((error) => this.viewMessageS());
   }
@@ -86,7 +86,7 @@ export class EmployeesComponent implements OnInit {
     this.alertS.next('Brak uprawnień do dodania pracownika');
   }
   viewMessageP(modal) {
-    this.alertP.next('Podaj imię i nazwisko pracownika');
+    this.alertP.next('Podaj dane pracownika');
     this.onAddEmployeeClick(modal);
   }
 }

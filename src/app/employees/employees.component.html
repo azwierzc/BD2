@@ -1,4 +1,4 @@
-<ngb-alert *ngIf="alertMessage" class="mt-3 mb-3" type="success" (close)="alertMessage = null">{{alertMessage}}</ngb-alert>
+<ngb-alert *ngIf="alertMessage" class="mt-3 mb-3" type="danger" (close)="alertMessage = null">{{alertMessage}}</ngb-alert>
 <div class="d-flex">
   <div class="card mx-auto" style="width: 95%;">
     <div class="card-header d-flex">
@@ -16,8 +16,8 @@
 
 
 <ng-template #modal let-modal>
-  <ngb-alert *ngIf="alertMessageS" class="mt-3 mb-3" type="success" (close)="alertMessageS = null">{{alertMessageS}}</ngb-alert>
-  <ngb-alert *ngIf="alertMessageP" class="mt-3 mb-3" type="success" (close)="alertMessageP = null">{{alertMessageP}}</ngb-alert>
+  <ngb-alert *ngIf="alertMessageS" class="mt-3 mb-3" type="danger" (close)="alertMessageS = null">{{alertMessageS}}</ngb-alert>
+  <ngb-alert *ngIf="alertMessageP" class="mt-3 mb-3" type="danger" (close)="alertMessageP = null">{{alertMessageP}}</ngb-alert>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Dodaj pracownika</h4>
   </div>

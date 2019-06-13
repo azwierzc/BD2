@@ -14,6 +14,8 @@ import {Subject} from 'rxjs';
 })
 export class RoomsComponent implements OnInit {
 
+  roomToAddTypeOptions: string[] = ['MRI', 'operacyjna', 'RTG', 'okołozabiegowa', 'chorych'];
+  room: RoomModel;
   roomsList: RoomModel[];
   roomToAdd: RoomToAddModel;
   private alert = new Subject<string>();
@@ -43,7 +45,23 @@ export class RoomsComponent implements OnInit {
   }
 
   resolveRooms() {
-    this.service.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list);
+    this.service.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list)
+      .then(() => {
+
+        this.roomsList.forEach((room) => {
+          if (room.type === 'SURGERY') {
+            room.type = 'operacyjna';
+          } else if (room.type === 'PERIOPERATIVE') {
+            room.type = 'okołozabiegowa';
+          } else if (room.type === 'PATIENT') {
+            room.type = 'chorych';
+          } else if (room.type === 'MRI') {
+            room.type = 'MRI';
+          } else if (room.type === 'RTG')  {
+            room.type = 'RTG';
+          }
+        });
+      });
   }
 
   onDeleteEvent(id: number) {
@@ -60,6 +78,17 @@ export class RoomsComponent implements OnInit {
   }
 
   saveReport(modal) {
+    if (this.roomToAdd.type === 'operacyjna') {
+      this.roomToAdd.type = 'SURGERY';
+    } else if (this.roomToAdd.type === 'okołozabiegowa') {
+      this.roomToAdd.type = 'PERIOPERATIVE';
+    } else if (this.roomToAdd.type === 'chorych') {
+      this.roomToAdd.type = 'PATIENT';
+    } else if (this.roomToAdd.type === 'MRI') {
+      this.roomToAdd.type = 'MRI';
+    } else {
+      this.roomToAdd.type = 'RTG';
+    }
     if (!this.roomToAdd.type || !this.roomToAdd.number) {this.viewMessageP(modal); }
     this.service.saveRoom(this.roomToAdd).then(() => this.resolveRooms()).then(() => modal.close())
       .catch((error) => this.viewMessageS());

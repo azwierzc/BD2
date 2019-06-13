@@ -71,7 +71,24 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   resolveRooms() {
-    this.roomService.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list);
+    this.roomService.fetchRoomsList().then((list: RoomModel[]) => this.roomsList = list)
+      .then(() => {
+
+        this.roomsList.forEach((room) => {
+          if (room.type === 'SURGERY') {
+            room.type = 'operacyjna';
+          } else if (room.type === 'PERIOPERATIVE') {
+            room.type = 'okołozabiegowa';
+          } else if (room.type === 'PATIENT') {
+            room.type = 'chorych';
+          } else if (room.type === 'MRI') {
+            room.type = 'MRI';
+          } else if (room.type === 'RTG')  {
+            room.type = 'RTG';
+          }
+        });
+      });
+
   }
 
   resolveReportsToEmployee() {

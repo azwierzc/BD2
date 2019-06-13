@@ -1,4 +1,6 @@
-<div class="card" *ngIf="room">
+<div class="btn btn-primary mr-4 mt-0 float-right" (click)="onBackClick()"> Wróć</div>
+
+<div class="card mt-5" *ngIf="room">
   <div class="card-header"><b>Sala</b> - Szczegóły</div>
   <div class="card-body">
     <p class="card-text"> <b>Id:</b> {{room.id}}</p>
@@ -18,5 +20,3 @@
                                (deleteEvent)="onDeleteEvent($event)"></app-room-reservation-item>
   </div>
 </div>
-
-<div class="btn btn-primary mr-4 mt-5" (click)="onBackClick()"> Wróć</div>

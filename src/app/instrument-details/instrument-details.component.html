@@ -1,4 +1,6 @@
-<div class="card" *ngIf="instrument">
+<div class="btn btn-primary mr-4 mt-0 float-right" (click)="onBackClick()"> Wróć</div>
+
+<div class="card mt-5" *ngIf="instrument">
   <div class="card-header">Szczegóły</div>
   <div class="card-body">
     <h5 class="card-title"> <b>Urządzenie</b></h5>
@@ -17,4 +19,4 @@
   <app-instrument-reservation-item [instrumentReservation]="instrumentReservation" [showEmployee]="true" (deleteEvent)="onDeleteEvent($event)"></app-instrument-reservation-item>
 
 </div>
-<div class="btn btn-primary mr-4 mt-4" (click)="onBackClick()"> Wróć</div>
+

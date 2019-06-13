@@ -28,7 +28,7 @@ a {
 }
 a:hover {
   link: none;
-   background: #2977ff;
+   background: rgba(1, 89, 160, 0.28);
  }
 a:link {
  text-decoration: none;

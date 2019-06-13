@@ -76,6 +76,6 @@ export class WardsComponent implements OnInit {
 
   viewMessageP(modal) {
     this.alertP.next('Uzupełnij typ oddziału.');
-    this.onAddWardClick(modal)
+    this.onAddWardClick(modal);
   }
 }

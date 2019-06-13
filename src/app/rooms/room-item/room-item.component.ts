@@ -16,6 +16,18 @@ export class RoomItemComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if (this.room.type === 'SURGERY') {
+      this.room.type = 'operacyjna';
+    } else if (this.room.type === 'PERIOPERATIVE') {
+      this.room.type = 'okołozabiegowa';
+    } else if (this.room.type === 'PATIENT') {
+      this.room.type = 'chorych';
+    } else if (this.room.type === 'MRI') {
+      this.room.type = 'MRI';
+    } else if (this.room.type === 'RTG') {
+      this.room.type = 'RTG';
+    }
   }
 
   onDeleteClick() {

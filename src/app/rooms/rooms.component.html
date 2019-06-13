@@ -28,7 +28,11 @@
           <div class="input-group-prepend">
             <span class="input-group-text">Typ</span>
           </div>
-          <input type="text" [(ngModel)]="roomToAdd.type" name="type">
+          <ng-select  [items]="roomToAddTypeOptions"
+                     name="type"
+                     placeholder="Wybierz typ sali"
+                     [(ngModel)]="roomToAdd.type">
+          </ng-select>
         </div>
       </div>
     </form>

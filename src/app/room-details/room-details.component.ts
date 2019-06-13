@@ -27,7 +27,22 @@ export class RoomDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.roomId = Number(this.route.snapshot.params.id);
-    this.roomService.fetchRoom(this.roomId).then((room: RoomModel) => this.room = room);
+    this.roomService.fetchRoom(this.roomId).then((room: RoomModel) => this.room = room)
+      .then(() => {
+
+        if (this.room.type === 'SURGERY') {
+          this.room.type = 'operacyjna';
+        } else if (this.room.type === 'PERIOPERATIVE') {
+          this.room.type = 'okołozabiegowa';
+        } else if (this.room.type === 'PATIENT') {
+          this.room.type = 'chorych';
+        } else if (this.room.type === 'MRI') {
+          this.room.type = 'MRI';
+        } else {
+          this.room.type = 'RTG';
+        }
+      });
+
     this.resolveRoomReservations();
   }
 
